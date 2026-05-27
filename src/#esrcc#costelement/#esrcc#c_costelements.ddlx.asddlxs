@@ -1,0 +1,93 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Cost Element',
+    typeNamePlural: 'Cost Elements',
+    title: {
+      type: #STANDARD,
+      value: 'CostElement'
+    },
+    description: { value: 'Description' }
+  }, 
+  presentationVariant: [{
+    qualifier: 'pVariant',
+    sortOrder: [{ by: 'Sysid', direction: #ASC },
+//                { by: 'LegalEntity', direction: #ASC},
+//                { by: 'CompanyCode', direction: #ASC },
+                { by: 'CostElement', direction: #ASC }],                
+    visualizations: [{type: #AS_LINEITEM }]
+  }]
+}
+annotate view /ESRCC/C_CostElements with
+{
+  @UI.facet: [ {
+    id: 'CE',
+    type: #COLLECTION,
+    purpose: #STANDARD,
+    position: 1
+  },
+  {
+    id: '/ESRCC/I_CostElements',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    parentId: 'CE',
+    label: 'General Information',
+    position: 1
+  },
+  {
+    id: 'Admin',
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'AdminGroup',
+    label: 'Admin Information',
+    position: 2
+  },
+  {
+    id: '/ESRCC/I_CostElementsText',
+    type: #LINEITEM_REFERENCE,
+    parentId: 'CE',
+    position: 3,
+    targetElement: '_CostElementsText'
+  } ]
+
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 1 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' }, useForValidation: true }]
+  Sysid;
+
+  @UI.identification: [ { position: 4, hidden: true } ]
+  @UI.lineItem: [ { position: 4 } ]
+  CostElement;
+
+  @UI.lineItem: [ { position: 5 } ]
+  Description;
+  
+  @UI.identification: [ { position: 6 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTELEMTYPE_F4', element: 'CostElemType' }, useForValidation: true }]
+  CostElemType;
+  
+  @UI.lineItem: [ { position: 7 } ]
+  @UI.fieldGroup: [{ qualifier: 'AdminGroup', position: 1 }]
+  CreatedBy;
+
+  @UI.lineItem: [ { position: 8, cssDefault.width: '9.5rem' } ]
+  @UI.fieldGroup: [{ qualifier: 'AdminGroup', position: 2 }]
+  CreatedAt;
+
+  @UI.lineItem: [ { position: 9 } ]
+  @UI.fieldGroup: [{ qualifier: 'AdminGroup', position: 3 }]
+  LastChangedBy;
+
+  @UI.lineItem: [ { position: 10, cssDefault.width: '9.5rem' } ]
+  @UI.fieldGroup: [{ qualifier: 'AdminGroup', position: 4 }]
+  LastChangedAt;
+
+  @UI.hidden: true
+  SysidDescription;
+  @UI.hidden: true
+  CostElemTypeDescription;
+
+}

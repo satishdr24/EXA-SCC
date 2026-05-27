@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/CHARGEOUT</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/CHARGEOUT</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/CHARGEOUT</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fchargeout</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/CHARGEOUT</NAME>
+       <DESCRIPTION>Maintain Service Product Standard Rules</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gY29uZmlndXJhdGlvbiBmb3IgQ2hhcmdlIE91dCBNZXRob2QgYXNzaWduZWQgdG8g
+U2VydmljZSBQcm9kdWN0IGZvciBTdGFuZGFyZCBjYWxjdWxhdGlvbi4KClRocmVlIG1ldGhvZHMg
+YXJlIGF2YWlsYWJsZTogSW5kaXJlY3QsIERpcmVjdCBhbmQgQWQtaG9jLiAKCkZvciBhbGwgQ2hh
+cmdlIE91dCBNZXRob2QsIGFuIGFkZGl0aW9uYWwgbGV2ZWwgb2YgY29uZmlndXJhdGlvbiBpcyBy
+ZXF1aXJlZAoKVGVjaG5pY2FsIFRhYmxlIE5hbWVzOgovRVNSQ0MvQ0hBUkdFT1VUIC0gTWFpbiBU
+YWJsZQoKUmVxdWlyZWQgY29uZmlndXJhdGlvbiBmaWVsZHM6CgpGaWVsZCBOYW1lOiBTRVJWSUNF
+IFBST0RVQ1QKRmllbGQgRGVzY3JpcHRpb246IFNlcnZpY2UgUHJvZHVjdApFeGFtcGxlOiAyNDc2
+OF9TRVJWX0lUMSAoU29jaWFsIE5ldHdvcmsgT3BlcmF0aW9uKQoKRmllbGQgTmFtZTogVkFMSUQg
+RlJPTQpGaWVsZCBEZXNjcmlwdGlvbjogVmFsaWRpdHkgc3RhcnQgZGF0ZQoKRmllbGQgTmFtZTog
+VkFMSUQgVE8KRmllbGQgRGVzY3JpcHRpb246IFZhbGlkaXR5IGVuZCBkYXRlCgpGaWVsZCBOYW1l
+OiBTVEFOREFSRCBSVUxFIElECkZpZWxkIERlc2NyaXB0aW9uOiBTdGFuZGFyZCBSdWxlIElECkV4
+YW1wbGU6IDEwNiAoRGlyZWN0IChCdWRnZXRzIHcgQWN0dWFsIENvc3QpKQoKRmllbGQgTmFtZTog
+Q0hBUkdFIE9VVCBNRVRIT0QKRmllbGQgRGVzY3JpcHRpb246IENoYXJnZS1vdXQgbWV0aG9kCkV4
+YW1wbGU6IEluZGlyZWN0IC8gRGlyZWN0IC8gQWQtaG9jIChGaWxsZWQgYXV0b21hdGljYWxseSkK
+CkZpZWxkIE5hbWU6IFdPUktGTE9XIFNUQVRVUwpGaWVsZCBEZXNjcmlwdGlvbjogV29ya2Zsb3cg
+c3RhdHVzCkV4YW1wbGU6IEZpbmFsaXplZA==</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

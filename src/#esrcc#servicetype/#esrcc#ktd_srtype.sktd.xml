@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/SRTYPE</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/SRTYPE</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/SRTYPE</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fsrtype</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/SRTYPE</NAME>
+       <DESCRIPTION>Maintain Service Types (Level 2)</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gU2VydmljZSBUeXBlIGxpc3QuCgpUZWNobmljYWwgVGFibGUgTmFtZXM6Ci9FU1JD
+Qy9TUlRZUEUgICAgICAtIE1haW4gVGFibGUKL0VTUkNDL1NSVlRZUEVUICAgIC0gVGV4dCBUYWJs
+ZQoKUmVxdWlyZWQgQ29uZmlndXJhdGlvbiBGaWVsZHM6CkZpZWxkIE5hbWU6IFNFUlZJQ0UgVFlQ
+RQpGaWVsZCBEZXNjcmlwdGlvbjogU2VydmljZSBUeXBlIG5hbWUKRXhhbXBsZTogQWNjb3VudGlu
+ZwoKRmllbGQgTmFtZTogREVTQ1JJUFRJT04KRmllbGQgRGVzY3JpcHRpb246IFNlcnZpY2UgVHlw
+ZSBEZXNjcmlwdGlvbgpFeGFtcGxlOiBBY2NvdW50aW5nIFN1cHBvcnQg</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

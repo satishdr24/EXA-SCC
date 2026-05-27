@@ -1,0 +1,42 @@
+projection implementation in class /ESRCC/BP_C_SYSINFO_S unique;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_SysInfo_S alias SystemInfoAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _SystemInfo { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_SysInfo alias SystemInfo
+extensible
+{
+  field ( modify )
+  Description;
+
+  use update ( augment );
+  use delete;
+
+  use action Copy;
+
+  use association _SystemInfoAll { with draft; }
+  use association _SystemInfoText { create; with draft; }
+}
+
+define behavior for /ESRCC/C_SysInfoText alias SystemInfoText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _SystemInfoAll { with draft; }
+  use association _SystemInfo { with draft; }
+}

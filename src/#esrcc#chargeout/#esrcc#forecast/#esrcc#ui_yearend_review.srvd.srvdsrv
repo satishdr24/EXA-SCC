@@ -1,0 +1,4 @@
+@EndUserText.label: 'Year End Review'
+define service /ESRCC/UI_YEAREND_REVIEW {
+  expose /ESRCC/C_YEAREND_REVIEW as YearEndReview;
+}

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/RRMATTER</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/RRMATTER</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/RRMATTER</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2frrmatter</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/RRMATTER</NAME>
+       <DESCRIPTION>Maintain Recharge/Reimbursement Matter</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gUmVjaGFyZ2UvUmVpbWJ1cnNlbWVudCBNYXR0ZXIuCgpUZWNobmljYWwgVGFibGUg
+TmFtZXM6Ci9FU1JDQy9SUk1BVFRFUiAtIE1haW4gVGFibGUKL0VTUkNDL1JSTUFUVEVSVCAtIFRl
+eHQgVGFibGUKClJlcXVpcmVkIGNvbmZpZ3VyYXRpb24gZmllbGRzOgoKRmllbGQgTmFtZTogUlJf
+TUFUVEVSCkZpZWxkIERlc2NyaXB0aW9uOiBSZWNoYXJnZS9SZWltYnVyc2VtZW50IE1hdHRlcgpF
+eGFtcGxlOiBSUl9TQUxFCgpGaWVsZCBOYW1lOiBERVNDUklQVElPTgpGaWVsZCBEZXNjcmlwdGlv
+bjogUmVjaGFyZ2UvUmVpbWJ1cnNlbWVudCBNYXR0ZXIgRGV0YWlscwpFeGFtcGxlOiBTYWxlcyBN
+YXJnaW4gKGZvciByZWNoYXJnZSB0byBJUCBIb2xkZXIp</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

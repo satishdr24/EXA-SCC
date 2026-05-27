@@ -1,0 +1,6 @@
+abstract;
+
+define behavior for /ESRCC/D_RR_CopyMatterP //alias <alias_name>
+{
+  field ( mandatory ) SourceKeyField;
+}

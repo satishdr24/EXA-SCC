@@ -1,0 +1,7 @@
+abstract;
+
+
+define behavior for /ESRCC/D_CopyMatterP //alias <alias_name>
+{
+ field ( mandatory ) RRmatter;
+}

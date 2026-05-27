@@ -1,0 +1,110 @@
+managed with additional save implementation in class /ESRCC/BP_I_RR_MATTER_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RR_Matter_S alias RRMatterAll
+draft table /ESRCC/D_RRMAT_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+extensible
+{
+  field ( readonly )
+   SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _RRMatter { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_Matter alias RRMatter
+persistent table /ESRCC/RRMATTER
+draft table /ESRCC/D_RRMATER
+etag master LocalLastChangedAt
+lock dependent by _RRMatterAll
+authorization dependent by _RRMatterAll
+extensible
+{
+  field ( mandatory : create )
+   RrMatter;
+
+  field ( readonly )
+   SingletonID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   RrMatter;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) CopyRRMatter parameter /ESRCC/D_CopyMatterP [1];
+
+  mapping for /ESRCC/RRMATTER corresponding extensible
+  {
+    RrMatter = RR_MATTER;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _RRMatterAll { with draft; }
+  association _RRMatterText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_RR_MatterText alias RRMatterText
+persistent table /ESRCC/RRMATTERT
+draft table /ESRCC/D_RRMATET
+etag master LocalLastChangedAt
+lock dependent by _RRMatterAll
+authorization dependent by _RRMatterAll
+extensible
+{
+  field ( mandatory : create )
+   Spras;
+
+  field ( readonly )
+   SingletonID,
+   RrMatter,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Spras;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for /ESRCC/RRMATTERT corresponding extensible
+  {
+    Spras = SPRAS;
+    RrMatter = RR_MATTER;
+    Description = DESCRIPTION;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _RRMatterAll { with draft; }
+  association _RRMatter { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

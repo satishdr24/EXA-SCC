@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/COSTOBJECTTYPE</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/COSTOBJECTTYPE</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/COSTOBJECTTYPE</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fcostobjecttype</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/COSTOBJECTTYPE</NAME>
+       <DESCRIPTION>Maintain Cost Object Types</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gQ29zdCBPYmplY3QgVHlwZXMgbGlzdCB1c2VkIGluIGNvc3QgYmFzZSBzb3VyY2Ug
+ZGF0YS4KClRlY2huaWNhbCBUYWJsZSBOYW1lczogCi9FU1JDQy9DU1RPQkpUWVAgIC0gTWFpbiBU
+YWJsZQovRVNSQ0MvQ1NUQkpUWVBUICAtIFRleHQgVGFibGUKClJlcXVpcmVkIGNvbmZpZ3VyYXRp
+b24gZmllbGRzOgpGaWVsZCBOYW1lOiBDT1NUX09CSkVDVApGaWVsZCBEZXNjcmlwdGlvbjogQ29z
+dCBPYmplY3QgVHlwZSAKRXhhbXBsZTogQ0MsIElPCgpGaWVsZCBOYW1lOiBERVNDUklQVElPTgpG
+aWVsZCBEZXNjcmlwdGlvbjogQ29zdCBPYmplY3QgVHlwZSBkZXRhaWxzCkV4YW1wbGU6IENvc3Qg
+Q2VudGVyLCBJbnRlcm5hbCBPcmRlcgoK</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

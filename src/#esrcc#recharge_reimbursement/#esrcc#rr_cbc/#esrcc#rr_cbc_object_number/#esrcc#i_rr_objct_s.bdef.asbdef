@@ -1,0 +1,128 @@
+managed with additional save implementation in class /ESRCC/BP_I_RR_OBJCT_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RR_Objct_S alias ObjctAll
+draft table /esrcc/d_rr_o_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation Objct~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _Objct { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_Objct alias Objct
+persistent table /esrcc/rr_objct
+draft table /esrcc/d_rr_obj1
+etag master LocalLastChangedAt
+lock dependent by _ObjctAll
+authorization dependent by _ObjctAll
+extensible
+{
+
+  field ( readonly )
+  SingletonID,
+  Uuid,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( mandatory : create, readonly : update )
+  SystemId,
+  CompanyCode,
+  LegalEntity,
+  ObjectType,
+  ObjectNumber;
+
+  field ( numbering : managed )
+  Uuid;
+
+  update ( features : global, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) CopyObject parameter /ESRCC/D_RR_CopyObjctP [1];
+
+  mapping for /esrcc/rr_objct corresponding extensible
+    {
+      Uuid               = UUID;
+      SystemId           = SYSTEM_ID;
+      LegalEntity        = LEGAL_ENTITY;
+      CompanyCode        = COMPANY_CODE;
+      ObjectType         = OBJECT_TYPE;
+      ObjectNumber       = OBJECT_NUMBER;
+      ActiveFlag         = ACTIVE_FLAG;
+      FunctionalArea     = FUNCTIONAL_AREA;
+      ProfitCenter       = PROFIT_CENTER;
+      BusinessDivision   = BUSINESS_DIVISION;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ObjctAll { with draft; }
+  association _ObjctText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateData on save { create; update; }
+}
+
+define behavior for /ESRCC/I_RR_ObjctText alias ObjctText
+persistent table /esrcc/rr_objctt
+draft table /esrcc/d_rr_obj2
+etag master LocalLastChangedAt
+lock dependent by _ObjctAll
+authorization dependent by _ObjctAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  Uuid,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/rr_objctt corresponding extensible
+    {
+      Spras              = SPRAS;
+      Uuid               = UUID;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ObjctAll { with draft; }
+  association _Objct { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

@@ -1,0 +1,6 @@
+abstract;
+
+define behavior for /ESRCC/D_CopyObjectTypeP //alias <alias_name>
+{
+  field ( mandatory ) ObjectType;
+}

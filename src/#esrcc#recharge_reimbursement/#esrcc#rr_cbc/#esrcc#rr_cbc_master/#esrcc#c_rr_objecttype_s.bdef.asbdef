@@ -1,0 +1,43 @@
+projection implementation in class /ESRCC/BP_C_RR_OBJECTTYPE_S unique;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_RR_ObjectType_S alias ObjectTypeAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _ObjectType { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_RR_ObjectType alias ObjectType
+extensible
+{
+  field ( modify )
+   Description;
+
+
+  use update( augment );
+  use delete;
+
+  use action CopyObjectType;
+
+  use association _ObjectTypeAll { with draft; }
+  use association _ObjectTypeText { create; with draft; }
+}
+
+define behavior for /ESRCC/C_RR_ObjectTypeText alias ObjectTypeText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _ObjectTypeAll { with draft; }
+  use association _ObjectType { with draft; }
+}

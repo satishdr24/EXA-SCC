@@ -1,0 +1,90 @@
+managed with additional save implementation in class /ESRCC/BP_I_WFCUST unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_WfCust_S alias RoleAssignmentAll
+draft table /esrcc/d_wfcus_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation RoleAssignment~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _RoleAssignment { create ( features : instance ); with draft; }
+}
+
+define behavior for /ESRCC/I_WfCust alias RoleAssignment
+persistent table /esrcc/wfcust
+draft table /esrcc/d_wfcust
+etag master LocalLastChangedAt
+lock dependent by _RoleAssignmentAll
+authorization dependent by _RoleAssignmentAll
+extensible
+{
+  field ( mandatory : create )
+  Application,
+  Approvallevel;
+  // Design Requirement: The below key fields are not mandatory
+  //    Legalentity,
+  //    Sysid,
+  //    Costobject,
+  //    Costcenter;
+
+  field ( readonly )
+  SingletonID, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  field ( readonly : update )
+  Application,
+  Approvallevel,
+  Legalentity,
+  Sysid,
+  Costobject,
+  Costcenter;
+
+  field ( mandatory )
+  Usergroup;
+
+  update ( features : global, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyWfCustP [1];
+
+  mapping for /esrcc/wfcust corresponding extensible
+    {
+      Application        = APPLICATION;
+      Approvallevel      = APPROVALLEVEL;
+      Legalentity        = LEGALENTITY;
+      Sysid              = SYSID;
+      Costobject         = COSTOBJECT;
+      Costcenter         = COSTCENTER;
+      Usergroup          = USERGROUP;
+      Pfcgrole           = PFCGROLE;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RoleAssignmentAll { with draft; }
+
+  validation ValidateData on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

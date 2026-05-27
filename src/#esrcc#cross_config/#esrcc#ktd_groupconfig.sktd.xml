@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/GROUPCONFIG</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/GROUPCONFIG</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/GROUPCONFIG</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fgroupconfig</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/GROUPCONFIG</NAME>
+       <DESCRIPTION>Maintain Group Configuration</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gQmFzaWMgZ3JvdXAgY29uZmlndXJhdGlvbiBjb250YWluaW5nIGNvbmZpZ3VyYXRp
+b24gZm9yIGN1cnJlbmN5IGFuZCBzaWducy4KClRlY2huaWNhbCBUYWJsZSBOYW1lczoKL0VTUkND
+L0dST1VQICAtIE1haW4gVGFibGUKClJlcXVpcmVkIENvbmZpZ3VyYXRpb24gRmllbGRzOgpGaWVs
+ZCBOYW1lOiBHUk9VUF9DVVJSRU5DWQpGaWVsZCBEZXNjcmlwdGlvbjogR3JvdXAgQ3VycmVuY3kK
+RXhhbXBsZTogRVVSCgpGaWVsZCBOYW1lOiBDT1NUX1NJR04KRmllbGQgRGVzY3JpcHRpb246IFNp
+Z24gZm9yIEV4cGVuc2VzL0Nvc3QKRXhhbXBsZTpOZWdhdGl2ZSBNaW51cyxQb3NpdGl2ZSBQbHVz
+CgpGaWVsZCBOYW1lOiBDT05WRVJTSU9OX1JBVEVfVFlQRQpGaWVsZCBEZXNjcmlwdGlvbjogU0FQ
+IGNvbnZlcnNpb24gdHlwZQpFeGFtcGxlOk0K</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

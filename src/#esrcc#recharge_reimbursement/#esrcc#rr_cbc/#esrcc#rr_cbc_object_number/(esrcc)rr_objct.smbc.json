@@ -1,0 +1,40 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Recharge/Reimbursement Objects",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "/ESRCC/UI_RR_OBJCT_O4",
+    "serviceName": "/ESRCC/UI_RR_OBJCT_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "ObjctAll",
+    "name": "RR Object",
+    "configurationGroup": "/ESRCC/BC_GROUP12",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "ObjctAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "Objct",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true,
+        "rowCountMode": "auto"
+      },
+      {
+        "entitySet": "ObjctText",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow"
+      }
+    ]
+  }
+}

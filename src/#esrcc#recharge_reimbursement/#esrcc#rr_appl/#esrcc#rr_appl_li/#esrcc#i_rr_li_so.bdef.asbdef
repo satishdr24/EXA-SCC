@@ -1,0 +1,30 @@
+unmanaged implementation in class /esrcc/bp_i_rr_li_so unique;
+strict ( 1 );
+extensible ;
+
+
+define behavior for /ESRCC/I_RR_LI_SO
+extensible
+lock master
+authorization master ( instance )
+{
+
+
+  static action (  precheck ) CreateSO parameter /ESRCC/D_RR_CreateSO  result [1] /ESRCC/API_RESPONSE;
+  static action AcknowledgeSO parameter /ESRCC/D_RR_UPDATE_SO_NO result [1] /ESRCC/API_RESPONSE;
+  field ( readonly )
+
+  Ryear,
+  Period,
+  Fplv,
+  SystemID,
+  LegalEntity,
+  CompanyCode,
+  ObjectType,
+  ObjectNumber,
+  Ledger,
+  Belnr,
+  Buzei,
+  RRMatter,
+  Material;
+}

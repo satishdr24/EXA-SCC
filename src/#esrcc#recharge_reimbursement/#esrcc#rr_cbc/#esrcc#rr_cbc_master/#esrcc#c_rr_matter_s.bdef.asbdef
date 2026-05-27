@@ -1,0 +1,43 @@
+projection implementation in class /ESRCC/BP_C_RR_MATTER_S unique;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_RR_Matter_S alias RRMatterAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _RRMatter { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_RR_Matter alias RRMatter
+extensible
+{
+  field ( modify )
+   Description;
+
+
+  use update( augment );
+  use delete;
+
+  use action CopyRRMatter;
+
+  use association _RRMatterAll { with draft; }
+  use association _RRMatterText { create; with draft; }
+}
+
+define behavior for /ESRCC/C_RR_MatterText alias RRMatterText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _RRMatterAll { with draft; }
+  use association _RRMatter { with draft; }
+}

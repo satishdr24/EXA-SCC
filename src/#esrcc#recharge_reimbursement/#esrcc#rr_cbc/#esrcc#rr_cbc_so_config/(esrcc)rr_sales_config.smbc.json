@@ -1,0 +1,35 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain RR SO Group by Configuration",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "/ESRCC/UI_RR_SALES_CONF_O4",
+    "serviceName": "/ESRCC/UI_RR_SALES_CONF_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "RR_Sales_ConfigAll",
+    "name": "RR SO Group by Configuration",
+    "configurationGroup": "/ESRCC/BC_GROUP12",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "RR_Sales_ConfigAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "RR_Sales_Config",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true,
+        "rowCountMode": "auto"
+      }
+    ]
+  }
+}

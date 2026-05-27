@@ -1,0 +1,29 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo.typeName: 'Group By Key'
+
+annotate view /ESRCC/C_RR_Sales_Config_S with
+
+{
+  @UI.facet: [ { id: 'Transport',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'Transport',
+                 position: 1,
+                 hidden: #(HideTransport) },
+               { id: '/ESRCC/I_RR_Sales_Config',
+                 purpose: #STANDARD,
+                 type: #LINEITEM_REFERENCE,
+                 label: 'Maintain Recharge/Reimbursement SO Group by Configuration',
+                 position: 2,
+                 targetElement: '_RR_Sales_Config' } ]
+  @UI.lineItem: [ { position: 1 } ]
+  SingletonID;
+
+  @UI.hidden: true
+  HideTransport;
+
+  @UI.identification: [ { position: 2, importance: #HIGH },
+                        { type: #FOR_ACTION, dataAction: 'SelectCustomizingTransptReq', label: 'Select Transport' } ]
+  TransportRequestID;
+}

@@ -1,0 +1,41 @@
+projection implementation in class /ESRCC/BP_C_CSTOBJCT unique;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_CstObjct_S alias CostObjectAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _CostObject { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_CstObjct alias CostObject
+extensible
+{
+  field ( modify )
+   Description;
+
+  use update( augment );
+  use delete;
+  use action Copy;
+
+  use association _CostObjectAll { with draft; }
+  use association _CostObjectText { create; with draft; }
+}
+
+define behavior for /ESRCC/C_CstObjctText alias CostObjectText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _CostObjectAll { with draft; }
+  use association _CostObject { with draft; }
+}

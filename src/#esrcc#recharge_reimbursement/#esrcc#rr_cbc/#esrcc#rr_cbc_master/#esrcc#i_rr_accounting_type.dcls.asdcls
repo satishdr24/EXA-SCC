@@ -1,0 +1,5 @@
+@MappingRole: true
+define role /ESRCC/I_RR_Accounting_Type {
+  grant select on /ESRCC/I_RR_Accounting_Type
+  where ( ) = ASPECT pfcg_auth ( 'S_TABU_NAM', ACTVT = '03', TABLE = '/ESRCC/I_RR_ACCOUNTING_TYPE' );
+}

@@ -1,0 +1,58 @@
+projection implementation in class /ESRCC/BP_C_CORULE_S unique;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_CoRule_S alias RuleAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _Rule { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_CoRule alias Rule
+extensible
+{
+  field ( modify )
+   Description;
+
+
+  use update( augment );
+  use delete;
+
+  use action Copy;
+  use action Submit;
+  use action Finalize;
+  use action Reopen;
+
+  use association _RuleAll { with draft; }
+  use association _RuleText { create; with draft; }
+  use association _Weightage { create; with draft; }
+}
+
+define behavior for /ESRCC/C_CoRuleText alias RuleText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _RuleAll { with draft; }
+  use association _Rule { with draft; }
+}
+
+define behavior for /ESRCC/C_AllocWeightage alias Weightage
+extensible
+{
+  use update;
+  use delete;
+  use action Copy;
+
+  use association _RuleAll { with draft; }
+  use association _Rule { with draft; }
+}

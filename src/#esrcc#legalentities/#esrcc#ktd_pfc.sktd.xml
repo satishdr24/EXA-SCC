@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/PFC</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/PFC</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/PFC</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fpfc</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/PFC</NAME>
+       <DESCRIPTION>Maintain Profit Centers</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gUHJvZml0IENlbnRlcnMgTGlzdCByZXF1aXJlZCBmb3IgQ29zdCBPYmplY3QgY2hh
+cmFjdGVyaXN0aWNzIGluIENvc3QgQmFzZS4KClRlY2huaWNhbCBUYWJsZSBOYW1lczoKL0VTUkND
+L1BGQyAgLSBNYWluIFRhYmxlCi9FU1JDQy9QRkNUIC0gVGV4dCBUYWJsZQoKUmVxdWlyZWQgQ29u
+ZmlndXJhdGlvbiBGaWVsZHM6CkZpZWxkIE5hbWU6IFBST0ZJVCBDRU5URVIKRmllbGQgRGVzY3Jp
+cHRpb246IFByb2ZpdCBDZW50ZXIKRXhhbXBsZTogMTAwMDEKCkZpZWxkIE5hbWU6IERFU0NSSVBU
+SU9OCkZpZWxkIERlc2NyaXB0aW9uOiBQcm9maXQgQ2VudGVyIERlc2NyaXB0aW9ucwpFeGFtcGxl
+Ok9wZXJhdGlvbnMgT2Zmcm9hZA==</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

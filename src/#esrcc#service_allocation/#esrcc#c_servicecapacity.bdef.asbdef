@@ -1,0 +1,12 @@
+projection;
+strict ( 2 );
+extensible;
+
+define behavior for /ESRCC/C_ServiceCapacity alias ServiceCapacity
+extensible
+{
+  use create;
+  use update;
+  use delete;
+  field ( suppress ) locallastchangedat;
+}

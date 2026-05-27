@@ -1,0 +1,41 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Recharge/Reimbursement Matter",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "/ESRCC/UI_RR_MATTER_O4",
+    "serviceName": "/ESRCC/UI_RR_MATTER_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "RRMatterAll",
+    "name": "RR Matter",
+    "configurationGroup": "/ESRCC/BC_GROUP12",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "RRMatterAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "RRMatter",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true,
+        "rowCountMode": "auto"
+      },
+      {
+        "entitySet": "RRMatterText",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true
+      }
+    ]
+  }
+}

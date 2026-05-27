@@ -1,0 +1,42 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Description', 
+    typeNamePlural: 'Descriptions', 
+    title: {
+      type: #STANDARD, 
+      label: 'Recharge Reimbursement Matter Text', 
+      value: 'Spras'
+    }
+  }
+}
+annotate view /ESRCC/C_RR_MatterText with
+{
+  @UI.facet: [ {
+    id: '/ESRCC/I_RR_MatterText', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 1 
+  } ]
+ 
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.textArrangement: #TEXT_LAST
+  Spras;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Description;
+  
+   @UI.hidden: true
+  LanguageName;
+
+  @UI.hidden: true
+  RrMatter;
+}

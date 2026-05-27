@@ -1,0 +1,507 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: { typeName: 'Recharge/Reimbursement Line Item',
+                  typeNamePlural: 'Recharge/Reimbursement Line Items',
+                  title.value: 'ObjectNumDescription',
+                  description.value: 'ObjectNumber' }
+
+@UI.presentationVariant: [ { qualifier: 'Default',
+                             sortOrder: [ { by: 'LocalLastChangedAt', direction: #DESC },
+                                          { by: 'CreatedAt',          direction: #DESC } ],
+                             visualizations: [ { type: #AS_LINEITEM, qualifier: 'Simplified' } ] } ]
+
+annotate view /ESRCC/C_RR_LI with
+
+{
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_YEAR', element: 'ryear' } } ]
+  @UI.facet: [ { id: 'CE', purpose: #STANDARD, type: #COLLECTION, label: 'Recharge/Reimbursement Line Item' },
+               { id: 'datasetheader',
+                 purpose: #HEADER,
+                 type: #DATAPOINT_REFERENCE,
+                 targetQualifier: 'admindataset',
+                 position: 20 },
+               { id: 'Generalinfo',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'GeneralGroup',
+                 label: 'General Information',
+                 position: 10 },
+               { id: 'Source',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'SourceGroup',
+                 label: 'Source Information',
+                 position: 20 },
+               { id: 'RRRelated',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'RRRelatedGroup',
+                 label: 'RR Related Information',
+                 position: 30 },
+               { id: 'Receiver',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'ReceiverGroup',
+                 label: 'Receiver Information',
+                 position: 40 },
+               { id: 'adminheader',
+                 purpose: #HEADER,
+                 type: #DATAPOINT_REFERENCE,
+                 targetQualifier: 'admin',
+                 position: 30 },
+               { id: 'adminacctype',
+                 purpose: #HEADER,
+                 type: #DATAPOINT_REFERENCE,
+                 targetQualifier: 'adminacctype',
+                 position: 50 },
+               { id: 'statusheader',
+                 purpose: #HEADER,
+                 type: #DATAPOINT_REFERENCE,
+                 targetQualifier: 'status',
+                 position: 40 },
+               { id: 'Admin',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'AdminGroup',
+                 label: 'Admin Information',
+                 position: 50 } ]
+  @UI.fieldGroup: [ { position: 10, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 60, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 60 } ]
+  Ryear;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_POPER', element: 'Poper' } } ]
+  @UI.fieldGroup: [ { position: 20, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 70, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 70 } ]
+  Period;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_COSTDATASET', element: 'costdataset' } } ]
+  @UI.dataPoint: { qualifier: 'admindataset', title: 'Cost Dataset' }
+  @UI.fieldGroup: [ { position: 30, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 80, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 80 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  Fplv;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source System ID'
+  @UI.fieldGroup: [ { position: 10, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 10, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 10 } ]
+  @UI.textArrangement: #TEXT_LAST
+  SystemID;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_LegalEntityAll_F4', element: 'Legalentity' } } ]
+  @EndUserText.label: 'Source Legal Entity'
+  @UI.fieldGroup: [ { position: 20, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 20, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 20 } ]
+  @UI.textArrangement: #TEXT_LAST
+  LegalEntity;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_CompanyCodes_F4', element: 'Ccode' } } ]
+  @EndUserText.label: 'Source Company Code'
+  @UI.fieldGroup: [ { position: 30, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 30, importance: #MEDIUM, label: '', cssDefault.width: '15rem' } ]
+  @UI.selectionField: [ { position: 30 } ]
+  @UI.textArrangement: #TEXT_LAST
+  CompanyCode;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RROBJECTS', element: 'Sourceobject' } } ]
+  @EndUserText.label: 'Source Object Type'
+  @UI.fieldGroup: [ { position: 40, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 40, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 40 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ObjectType;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_OBJECT_NUMBER_F4', element: 'ObjectNumber' } } ]
+  @EndUserText.label: 'Source Object Number'
+  @UI.fieldGroup: [ { position: 50, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 50, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 50 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ObjectNumber;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_PROFITCENTER_F4', element: 'ProfitCenter' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Profit Center'
+  @UI.fieldGroup: [ { position: 52, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 52, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  ProfitCenter;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_BUSINESSDIV_F4', element: 'BusinessDivision' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Business Division'
+  @UI.fieldGroup: [ { position: 54, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 54, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  Businessdivision;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_FunctionalArea_F4', element: 'FunctionalArea' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Functional Area'
+  @UI.fieldGroup: [ { position: 56, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 56, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  Functionalarea;
+  
+    @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_Related_Mat_F4', element: 'RRRelatedMaterial' } } ]
+  @EndUserText.label: 'Source Material'
+  @UI.fieldGroup: [ { position: 58, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 58, importance: #MEDIUM } ]
+  Material;
+  
+  
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Source Ledger'
+  @UI.fieldGroup: [ { position: 60, qualifier: 'SourceGroup' } ]
+  @UI.lineItem: [ { position: 100, importance: #MEDIUM } ]
+  Ledger;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Source Document Number'
+  @UI.fieldGroup: [ { position: 60, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 110, importance: #MEDIUM } ]
+  Belnr;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Line Item'
+  @UI.fieldGroup: [ { position: 65, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 115, importance: #MEDIUM } ]
+  Buzei;
+
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Source Reference Document'
+  @UI.fieldGroup: [ { position: 70, qualifier: 'GeneralGroup' } ]
+  @UI.hidden: true
+  @UI.lineItem: [ { position: 120, importance: #MEDIUM } ]
+  ReferenceBelnr;
+
+  @Consumption.filter.hidden: true
+  @UI.fieldGroup: [ { position: 80, qualifier: 'GeneralGroup' } ]
+  @UI.hidden: true
+  @UI.lineItem: [ { position: 130, importance: #MEDIUM } ]
+  BelnrText;
+
+  @Consumption.filter.hidden: true
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_DATASOURCE', element: 'ValueSource' } } ]
+  @UI.fieldGroup: [ { position: 90, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 140, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_ONLY
+  DataSource;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_STATUS', element: 'Status' } } ]
+  @EndUserText.label: 'RR Status'
+  @UI.dataPoint: { qualifier: 'status',
+                   title: 'RR Status',
+                   criticality: 'Criticality',
+                   criticalityRepresentation: #WITHOUT_ICON }
+  @UI.lineItem: [ { position: 142, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 100 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  RRStatus;
+
+
+  @EndUserText.label: 'RR Matter'
+  @UI.fieldGroup: [ { position: 10, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 144, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  RRMatter;
+
+  @UI.fieldGroup: [ { position: 47, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 146, importance: #MEDIUM, hidden: true } ]
+  Budat;
+  
+  @UI.fieldGroup: [ { position: 73, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 148, importance: #MEDIUM } ]
+  DocumentDate;
+
+  @UI.fieldGroup: [ { position: 43, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 149, importance: #MEDIUM, hidden: true } ]
+  PostingKey;
+
+  @UI.hidden: true
+  Criticality;
+
+
+  @Consumption.filter.hidden: true
+  @UI.dataPoint: { qualifier: 'admin', title: 'Total Cost (LC)' }
+  @UI.lineItem: [ { position: 150, importance: #MEDIUM } ]
+  LocalValue;
+
+  @Consumption.filter.hidden: true
+  LocalCurrency;
+
+  @Consumption.filter.hidden: true
+  @UI.fieldGroup: [ { position: 40, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 160, importance: #MEDIUM } ]
+  Ksl;
+
+  @Consumption.filter.hidden: true
+  GroupCurrency;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Source Quantity'
+  @UI.fieldGroup: [ { position: 30, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 180, importance: #MEDIUM } ]
+  Quantity;
+
+  @Consumption.filter.hidden: true
+  Meins;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_LegalEntityAll_F4', element: 'Legalentity' } } ]
+  @EndUserText.label: 'Source Customer/Vendor'
+  @UI.fieldGroup: [ { position: 40, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 200, importance: #MEDIUM, hidden: true } ]
+  @UI.textArrangement: #TEXT_LAST
+  @UI.hidden: true
+  Vendor;
+
+  @Consumption.filter.hidden: true
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_AccountingTypeMean', element: 'AccountingType' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Accounting Type Meaning'
+  @UI.dataPoint: { qualifier: 'adminacctype', title: 'Accounting Type Meaning' }
+  @UI.lineItem: [ { position: 260, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 110 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  RecAccountingType;
+
+  @UI.fieldGroup: [ { position: 74, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 262, importance: #MEDIUM } ]
+  Assignment;
+
+  @EndUserText.label: 'Segment Text'
+  @UI.fieldGroup: [ { position: 75, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 264, importance: #MEDIUM } ]
+  ItemText;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Receiver System ID'
+  @UI.fieldGroup: [ { position: 10, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 280, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 130 } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecSystemId;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_LegalEntityAll_F4', element: 'Legalentity' } } ]
+  @EndUserText.label: 'Receiver Legal Entity'
+  @UI.fieldGroup: [ { position: 20, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 270, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 120 } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecLegalentity;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_CompanyCodes_F4', element: 'Ccode' } } ]
+  @EndUserText.label: 'Receiver Company Code'
+  @UI.fieldGroup: [ { position: 30, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 290, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 140 } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecCompanyCode;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RROBJECTS', element: 'Sourceobject' } } ]
+  @EndUserText.label: 'Receiver Object Type'
+  @UI.fieldGroup: [ { position: 40, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 300, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 150 } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecObjectType;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_OBJECT_NUMBER_F4', element: 'ObjectNumber' } } ]
+  @EndUserText.label: 'Receiver Object Number'
+  @UI.fieldGroup: [ { position: 50, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 310, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 160 } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecObjectNumber;
+
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Receiver Business Division'
+  @UI.fieldGroup: [ { position: 60, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 340, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecBusinessDivision;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Receiver Profit Center'
+  @UI.fieldGroup: [ { position: 70, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 330, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecProfitCenter;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Receiver Functional Area'
+  @UI.fieldGroup: [ { position: 80, qualifier: 'ReceiverGroup' } ]
+  @UI.lineItem: [ { position: 320, importance: #MEDIUM } ]
+  @UI.textArrangement: #TEXT_LAST
+  RecFunctionalArea;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_Salesorder_created', element: 'Salesorder_created' } } ]
+  @EndUserText.label: 'SO Creation By'
+  @UI.fieldGroup: [ { position: 100, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 350, importance: #MEDIUM } ]
+//  @UI.selectionField: [ { position: 170 } ]
+  @UI.textArrangement: #TEXT_ONLY
+  RecSalesorderCreated;
+
+  @EndUserText.label: 'SO Reference No'
+  @UI.fieldGroup: [ { position: 110, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 360, importance: #MEDIUM, cssDefault.width: '20rem' } ]
+  SalesorderReference;
+
+//  @Consumption.filter.hidden: true
+  @UI.fieldGroup: [ { position: 110, qualifier: 'GeneralGroup' } ]
+  @UI.lineItem: [ { position: 370, importance: #MEDIUM } ]
+  SalesorderNumber;
+
+  @UI.fieldGroup: [ { position: 76, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 375, importance: #MEDIUM, cssDefault.width: '10rem' } ]
+  SoItem;
+
+  @EndUserText.label: 'Service Material'
+  @UI.fieldGroup: [ { position: 77, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 376, importance: #MEDIUM } ]
+  ServiceMaterial;
+
+  @UI.fieldGroup: [ { position: 78, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 377, importance: #MEDIUM, cssDefault.width: '10rem' } ]
+  SalesOrg;
+
+  @UI.fieldGroup: [ { position: 79, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 378, importance: #MEDIUM, cssDefault.width: '10rem' } ]
+  DistributionChannel;
+
+  @UI.fieldGroup: [ { position: 80, qualifier: 'RRRelatedGroup' } ]
+  @UI.lineItem: [ { position: 379, importance: #MEDIUM } ]
+  Division;
+
+  @Consumption.filter.hidden: true
+  @UI.fieldGroup: [ { position: 10, qualifier: 'AdminGroup' } ]
+  @UI.lineItem: [ { position: 390, importance: #MEDIUM } ]
+  CreatedBy;
+
+  @Consumption.filter.selectionType: #INTERVAL
+  @EndUserText.label: 'Created On'
+  @UI.fieldGroup: [ { position: 20, qualifier: 'AdminGroup' } ]
+  @UI.lineItem: [ { position: 400, importance: #MEDIUM } ]
+  @UI.selectionField: [ { position: 180 } ]
+  CreatedAt;
+
+  @Consumption.filter.hidden: true
+  @UI.fieldGroup: [ { position: 30, qualifier: 'AdminGroup' } ]
+  @UI.lineItem: [ { position: 410, importance: #MEDIUM } ]
+  LastChangedBy;
+
+  @Consumption.filter.selectionType: #INTERVAL
+  @EndUserText.label: 'Changed On'
+  @UI.fieldGroup: [ { position: 40, qualifier: 'AdminGroup' } ]
+  @UI.lineItem: [ { position: 420, importance: #MEDIUM } ]
+  LastChangedAt;
+
+  @Consumption.filter.hidden: true
+  @EndUserText.label: 'Source Legal Entity Country'
+  @EndUserText.quickInfo: 'Legal Entity Country'
+  @UI.hidden: false
+  @UI.lineItem: [ { position: 990, importance: #LOW } ]
+  country;
+
+  @EndUserText.label: 'Receiving Legal Entity Country'
+  @EndUserText.quickInfo: ' Receiving Legal Entity Country'
+  @UI.hidden: false
+  @UI.lineItem: [ { position: 999, importance: #LOW } ]
+  ReceivingCountry;
+
+
+  @UI.hidden: true
+  SysidDescription;
+
+  @UI.hidden: true
+  LegalentityDescription;
+
+  @UI.hidden: true
+  CompanyCodeDescription;
+
+  @UI.hidden: true
+  ObjectDescription;
+
+  @UI.hidden: true
+  ObjectNumDescription;
+
+  @UI.hidden: true
+  ProfitcenterDescription;
+
+  @UI.hidden: true
+  RRMatterDescription;
+
+  @UI.hidden: true
+  DatasourceDescription;
+
+  @UI.hidden: true
+  DatasetDescription;
+
+  @UI.hidden: true
+  BusinessdivisonDescription;
+
+  @UI.hidden: true
+  FunctionalAreaDescription;
+
+  @UI.hidden: true
+  SalesorderCreatedDescription;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  AccountingTypeMeaning;
+
+  @UI.hidden: true
+  StatusDescription;
+
+  @UI.hidden: true
+  RecSysidDescription;
+
+  @UI.hidden: true
+  RecLegalentityDescription;
+
+  @UI.hidden: true
+  RecCompanyCodeDescription;
+
+  @UI.hidden: true
+  RecObjectTypeDescription;
+
+  @UI.hidden: true
+  RecObjectNumDescription;
+
+  @UI.hidden: true
+  RecBusinessdivisonDescription;
+
+  @UI.hidden: true
+  RecFunctionalAreaDescription;
+
+  @UI.hidden: true
+  RecProfitcenterDescription;
+
+  @UI.hidden: true
+  VendorDescription;
+
+  @UI.hidden: true
+  Receivingcountryname;
+
+  @UI.hidden: true
+  legalentitycountryname;
+  
+}

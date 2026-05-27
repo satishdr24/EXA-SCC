@@ -1,0 +1,11 @@
+projection;
+strict ( 1 );
+extensible;
+
+define behavior for /ESRCC/C_CHGINVOICE //alias <alias_name>
+extensible
+{
+  use action createInvoice;
+  use action finalizeInvoice;
+  use action DiscardInvoice;
+}

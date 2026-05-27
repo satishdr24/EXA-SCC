@@ -1,0 +1,77 @@
+managed with additional save implementation in class /ESRCC/BP_I_RR_SALES_CONFIG_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RR_Sales_Config_S alias RR_Sales_ConfigAll
+draft table /esrcc/d_rr_so_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _RR_Sales_Config { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_Sales_Config alias RR_Sales_Config
+persistent table /esrcc/rr_soconf
+draft table /esrcc/d_rr_soco
+etag master LocalLastChangedAt
+lock dependent by _RR_Sales_ConfigAll
+authorization dependent by _RR_Sales_ConfigAll
+extensible
+{
+  field ( mandatory : create )
+  GroupByKey;
+
+  field ( readonly )
+  SingletonID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+
+  field ( readonly : update )
+  GroupByKey;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  factory action ( features : instance ) CopyRR_Sales_Config parameter /ESRCC/D_CopyRRSalesConfigP [1];
+
+  mapping for /esrcc/rr_soconf corresponding extensible
+    {
+      GroupByKey         = GROUP_BY_KEY;
+      GroupBy            = GROUP_BY;
+      GroupByItem        = group_by_item;
+      ItemCount          = item_count;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RR_Sales_ConfigAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+
+}

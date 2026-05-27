@@ -1,0 +1,27 @@
+projection;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_WfSwitch_S alias WorkflowSwitchAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _WorkflowSwitch { create; with draft; }
+}
+
+define behavior for /ESRCC/C_WfSwitch alias WorkflowSwitch
+extensible
+{
+  use update;
+  use delete;
+  use action Copy;
+
+  use association _WorkflowSwitchAll { with draft; }
+}

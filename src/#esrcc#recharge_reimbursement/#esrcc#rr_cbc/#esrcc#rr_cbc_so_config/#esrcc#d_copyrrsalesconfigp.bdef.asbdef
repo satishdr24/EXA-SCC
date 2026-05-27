@@ -1,0 +1,7 @@
+abstract;
+
+
+define behavior for /ESRCC/D_CopyRRSalesConfigP //alias <alias_name>
+{
+ field ( mandatory ) GroupByKey;
+}

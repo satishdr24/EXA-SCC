@@ -1,0 +1,42 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Recharge/Reimbursement Rules",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "/ESRCC/UI_RR_RULE_O4",
+    "serviceName": "/ESRCC/UI_RR_RULE_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "RuleAll",
+    "name": "RR Rule",
+    "configurationGroup": "/ESRCC/BC_GROUP12",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "RuleAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "Rule",
+        "tableType": "gridTable",
+        "selectionMode": "multi",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true,
+        "rowCountMode": "auto"
+      },
+      {
+        "entitySet": "RuleText",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+managed with additional save implementation in class /ESRCC/BP_I_RR_OBJECTTYPE_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RR_ObjectType_S alias ObjectTypeAll
+draft table /esrcc/d_rr_ob_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _ObjectType { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_ObjectType alias ObjectType
+persistent table /esrcc/rr_objtyp
+draft table /esrcc/d_rr_objt
+etag master LocalLastChangedAt
+lock dependent by _ObjectTypeAll
+authorization dependent by _ObjectTypeAll
+extensible
+{
+  field ( mandatory : create )
+  ObjectType;
+
+
+  field ( readonly )
+  SingletonID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  ObjectType;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  factory action ( features : instance ) CopyObjectType parameter /ESRCC/D_CopyObjectTypeP [1];
+
+  mapping for /esrcc/rr_objtyp corresponding extensible
+    {
+      ObjectType         = OBJECT_TYPE;
+      AccountingType     = accounting_type;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ObjectTypeAll { with draft; }
+  association _ObjectTypeText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_RR_ObjectTypeText alias ObjectTypeText
+persistent table /esrcc/rr_obtypt
+draft table /esrcc/d_rr_obty
+etag master LocalLastChangedAt
+lock dependent by _ObjectTypeAll
+authorization dependent by _ObjectTypeAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  ObjectType,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/rr_obtypt corresponding extensible
+    {
+      Spras              = SPRAS;
+      ObjectType         = OBJECT_TYPE;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ObjectTypeAll { with draft; }
+  association _ObjectType { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

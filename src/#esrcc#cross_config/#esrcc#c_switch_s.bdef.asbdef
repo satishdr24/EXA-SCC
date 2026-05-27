@@ -1,0 +1,28 @@
+projection;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_Switch_S alias SwitchAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _Switch { create; with draft; }
+}
+
+define behavior for /ESRCC/C_Switch alias Switch
+extensible
+{
+  use update;
+  use delete;
+
+  use action Copy;
+
+  use association _SwitchAll { with draft; }
+}

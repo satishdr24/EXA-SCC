@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/CHGFCA</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/CHGFCA</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/CHGFCA</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fchgfca</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/CHGFCA</NAME>
+       <DESCRIPTION>Maintain Service Product Forecast Rules</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gU2VydmljZSBQcm9kdWN0IEZvcmVjYXN0IFJ1bGVzIENvbmZpZ3VyYXRpb24uCgpU
+ZWNobmljYWwgVGFibGUgTmFtZXM6Ci9FU1JDQy9DSEdGQ0EgLSBNYWluIFRhYmxlCgpSZXF1aXJl
+ZCBjb25maWd1cmF0aW9uIGZpZWxkczoKCkZpZWxkIE5hbWU6IFNFUlZJQ0VQUk9EVUNUCkZpZWxk
+IERlc2NyaXB0aW9uOiBTZXJ2aWNlIFByb2R1Y3QKRXhhbXBsZTogQktTSC1TQy0xLUxlZ2FsIChM
+ZWdhbCBBZHZpc2UpCgpGaWVsZCBOYW1lOiBWQUxJREZST00KRmllbGQgRGVzY3JpcHRpb246IFZh
+bGlkIGZyb20gZGF0ZQoKRmllbGQgTmFtZTogVkFMSURUTwpGaWVsZCBEZXNjcmlwdGlvbjogVmFs
+aWQgdG8gZGF0ZQoKRmllbGQgTmFtZTogQ0hBUkdFT1VUX1JVTEVfSUQKRmllbGQgRGVzY3JpcHRp
+b246IENoYXJnZS1vdXQgUnVsZSBJRApFeGFtcGxlOiAwMDEgKEFyY2hldHlwZSAxIChEaXJlY3Qg
+Q2hhcmdlIHVzaW5nIEtXSCkpCgpGaWVsZCBOYW1lOiBDSEFSR0VPVVRfTUVUSE9ECkZpZWxkIERl
+c2NyaXB0aW9uOiBDaGFyZ2Ugb3V0IG1ldGhvZApFeGFtcGxlOiBEaXJlY3QsIEluZGlyZWN0LCBB
+ZGhvYwoKRmllbGQgTmFtZTogV09SS0ZMT1dfU1RBVFVTCkZpZWxkIERlc2NyaXB0aW9uOiBXb3Jr
+ZmxvdyBTdGF0dXMKRXhhbXBsZTogRmluYWxpemVk</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

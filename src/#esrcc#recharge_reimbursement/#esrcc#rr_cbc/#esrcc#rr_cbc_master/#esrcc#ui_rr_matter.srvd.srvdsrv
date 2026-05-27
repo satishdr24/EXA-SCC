@@ -1,0 +1,5 @@
+define service /ESRCC/UI_RR_MATTER {
+  expose /ESRCC/C_RR_MATTER_S as RRMatterAll;
+  expose /ESRCC/C_RR_MATTER as RRMatter;
+  expose /ESRCC/C_RR_MATTERTEXT as RRMatterText;
+}

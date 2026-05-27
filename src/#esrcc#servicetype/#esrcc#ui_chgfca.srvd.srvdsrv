@@ -1,0 +1,4 @@
+define service /ESRCC/UI_CHGFCA {
+  expose /ESRCC/C_CHGFCA_S as RuleAll;
+  expose /ESRCC/C_CHGFCA as Rule;
+}

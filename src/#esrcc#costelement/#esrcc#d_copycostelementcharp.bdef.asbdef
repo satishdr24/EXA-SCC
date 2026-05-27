@@ -1,0 +1,7 @@
+abstract;
+
+define behavior for /ESRCC/D_CopyCostElementCharP
+{
+  field ( mandatory )
+  Sysid, CostElementFrom, CostElementTo, ValidFrom, ValidTo;
+}

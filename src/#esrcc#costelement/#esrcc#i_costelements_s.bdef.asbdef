@@ -1,0 +1,112 @@
+managed with additional save implementation in class /ESRCC/BP_I_COSTELEMENTS_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_CostElements_S alias CostElementsAll
+draft table /esrcc/d_cst_e_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation CostElement~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _CostElements { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_CostElements alias CostElement
+persistent table /esrcc/cstelemnt
+draft table /esrcc/d_cst_elm
+etag master LocalLastChangedAt
+lock dependent by _CostElementsAll
+authorization dependent by _CostElementsAll
+extensible
+{
+  field ( readonly )
+  SingletonID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt;
+
+  field ( mandatory : create, readonly : update )
+  Sysid,
+  CostElement;
+
+  update ( features : global, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyCostElementsP [1];
+
+  mapping for /esrcc/cstelemnt corresponding extensible
+    {
+      Sysid              = SYSID;
+      CostElement        = COST_ELEMENT;
+      CostElemType       = costelemtype;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _CostElementsAll { with draft; }
+  association _CostElementsText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateData on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+}
+
+define behavior for /ESRCC/I_CostElementsText alias CostElementsText
+persistent table /esrcc/cstelemtt
+draft table /esrcc/d_cstelmc
+etag master LocalLastChangedAt
+lock dependent by _CostElementsAll
+authorization dependent by _CostElementsAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  SysId,
+  CostElement;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/cstelemtt corresponding extensible
+    {
+      Spras              = SPRAS;
+      SysId              = sysid;
+      CostElement        = cost_element;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _CostElementsAll { with draft; }
+  association _CostElements { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

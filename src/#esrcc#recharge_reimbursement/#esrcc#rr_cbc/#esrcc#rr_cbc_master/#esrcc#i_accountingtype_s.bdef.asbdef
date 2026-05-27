@@ -1,0 +1,112 @@
+managed with additional save implementation in class /ESRCC/BP_I_ACCOUNTINGTYPE_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_AccountingType_S alias AccountingTypeAll
+draft table /ESRCC/D_RR_AC_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+extensible
+{
+  field ( readonly )
+   SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _AccountingType { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_Accounting_Type alias AccountingType
+persistent table /ESRCC/RR_ACCTYP
+draft table /ESRCC/D_RR_ACCT
+etag master LocalLastChangedAt
+lock dependent by _AccountingTypeAll
+authorization dependent by _AccountingTypeAll
+extensible
+{
+  field ( mandatory : create )
+   AccountingType;
+
+  field ( readonly )
+   SingletonID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   AccountingType;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) CopyAccountingType parameter /ESRCC/D_CopyAccountingTypeP [1];
+
+  mapping for /ESRCC/RR_ACCTYP corresponding extensible
+  {
+    AccountingType = ACCOUNTING_TYPE;
+    AccMeaningWithPlus = ACC_MEANING_WITH_PLUS;
+    AccMeaningWithMinus = ACC_MEANING_WITH_MINUS;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _AccountingTypeAll { with draft; }
+  association _AccountingTypeText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_AccountingTypeText alias AccountingTypeText
+persistent table /ESRCC/RR_ACCTYT
+draft table /ESRCC/D_RR_ACT
+etag master LocalLastChangedAt
+lock dependent by _AccountingTypeAll
+authorization dependent by _AccountingTypeAll
+extensible
+{
+  field ( mandatory : create )
+   Spras;
+
+  field ( readonly )
+   SingletonID,
+   AccountingType,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Spras;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for /ESRCC/RR_ACCTYT corresponding extensible
+  {
+    Spras = SPRAS;
+    AccountingType = ACCOUNTING_TYPE;
+    Description = DESCRIPTION;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _AccountingTypeAll { with draft; }
+  association _AccountingType { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

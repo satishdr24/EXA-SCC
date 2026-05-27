@@ -1,0 +1,101 @@
+managed with additional save implementation in class /ESRCC/BP_I_BUSDIV_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_BusDiv_S alias BusinessDivisionAll
+draft table /esrcc/d_bus_d_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _BusinessDivision { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_BusDiv alias BusinessDivision
+persistent table /esrcc/bus_div
+draft table /esrcc/d_bus_div
+etag master LocalLastChangedAt
+lock dependent by _BusinessDivisionAll
+authorization dependent by _BusinessDivisionAll
+extensible
+{
+  field ( mandatory : create )
+  BusinessDivision;
+
+  field ( readonly )
+  SingletonID, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  field ( readonly : update )
+  BusinessDivision;
+
+  update ( features : global );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyBusDivP [1];
+
+  mapping for /esrcc/bus_div corresponding extensible
+    {
+      BusinessDivision   = BUSINESS_DIVISION;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _BusinessDivisionAll { with draft; }
+  association _BusinessDivisioText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_BusDivText alias BusinessDivisioText
+persistent table /esrcc/bus_divt
+draft table /esrcc/d_busdivt
+etag master LocalLastChangedAt
+lock dependent by _BusinessDivisionAll
+authorization dependent by _BusinessDivisionAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  BusinessDivision;
+
+  field ( readonly : update )
+  Spras;
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/bus_divt corresponding extensible
+    {
+      Spras              = SPRAS;
+      BusinessDivision   = BUSINESS_DIVISION;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _BusinessDivisionAll { with draft; }
+  association _BusinessDivision { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

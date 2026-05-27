@@ -1,0 +1,115 @@
+managed with additional save implementation in class /ESRCC/BP_I_LE_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_LE_S alias LegalEntityAll
+draft table /esrcc/d_le_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation LegalEntity~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _LegalEntity { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_LE alias LegalEntity
+persistent table /esrcc/le
+draft table /esrcc/d_le
+etag master LocalLastChangedAt
+lock dependent by _LegalEntityAll
+authorization dependent by _LegalEntityAll
+extensible
+{
+  field ( mandatory : create )
+  Legalentity;
+
+  field ( readonly )
+  SingletonID, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  field ( mandatory )
+  LocalCurr, Entitytype, Region, Role;
+
+  field ( readonly : update )
+  Legalentity;
+
+  update ( features : global, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyLeP [1];
+
+  mapping for /esrcc/le corresponding extensible
+    {
+      Legalentity        = LEGALENTITY;
+      Country            = COUNTRY;
+      LocalCurr          = LOCAL_CURR;
+      Entitytype         = ENTITYTYPE;
+      Region             = REGION;
+      Role               = ROLE;
+      TpProfile          = tpprofile;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _LegalEntityAll { with draft; }
+  association _LegalEntityText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateData on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+}
+
+define behavior for /ESRCC/I_LEText alias LegalEntityText
+persistent table /esrcc/le_t
+draft table /esrcc/d_le_t
+etag master LocalLastChangedAt
+lock dependent by _LegalEntityAll
+authorization dependent by _LegalEntityAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  Legalentity;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/le_t corresponding extensible
+    {
+      Spras              = SPRAS;
+      Legalentity        = LEGALENTITY;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _LegalEntityAll { with draft; }
+  association _LegalEntity { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

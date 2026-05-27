@@ -1,0 +1,29 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'Description',
+                  typeNamePlural: 'Descriptions',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement Objects Text', value: 'Spras' } }
+
+annotate view /ESRCC/C_RR_ObjctText with
+
+{
+  @UI.facet: [ { id: '/ESRCC/I_RR_ObjctText',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'General Information',
+                 position: 1 } ]
+  @UI.lineItem: [ { position: 1 } ]
+  @UI.textArrangement: #TEXT_LAST
+  Spras;
+
+  @UI.identification: [ { position: 2 } ]
+  @UI.lineItem: [ { position: 2 } ]
+  Description;
+
+  @UI.hidden: true
+  LanguageName;
+
+  @UI.hidden: true
+  Uuid;
+
+}

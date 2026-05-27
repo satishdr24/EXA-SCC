@@ -1,0 +1,43 @@
+projection implementation in class /ESRCC/BP_C_ACCOUNTINGTYPE_S unique;
+strict;
+use draft;
+extensible;
+
+define behavior for /ESRCC/C_AccountingType_S alias AccountingTypeAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _AccountingType { create ( augment ); with draft; }
+}
+
+define behavior for /ESRCC/C_RR_Accounting_Type alias AccountingType
+extensible
+{
+  field ( modify )
+   Description;
+
+
+  use update( augment );
+  use delete;
+
+  use action CopyAccountingType;
+
+  use association _AccountingTypeAll { with draft; }
+  use association _AccountingTypeText { create; with draft; }
+}
+
+define behavior for /ESRCC/C_AccountingTypeText alias AccountingTypeText
+extensible
+{
+  use update;
+  use delete;
+
+  use association _AccountingTypeAll { with draft; }
+  use association _AccountingType { with draft; }
+}

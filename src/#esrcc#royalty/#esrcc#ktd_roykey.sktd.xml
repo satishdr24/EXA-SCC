@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/ROYKEY</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/ROYKEY</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/ROYKEY</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2froykey</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/ROYKEY</NAME>
+       <DESCRIPTION>Maintain Royalty Bases</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gUm95YWx0eSBCYXNlcyBDb25maWd1cmF0aW9uIGZvciBjYWxjdWxhdGlvbiBtZXRo
+b2RzLgoKVGVjaG5pY2FsIFRhYmxlIE5hbWVzOgovRVNSQ0MvUk9ZS0VZIC0gTWFpbiBUYWJsZQov
+RVNSQ0MvUk9ZS0VZVCAtIFRleHQgVGFibGUKClJlcXVpcmVkIENvbmZpZ3VyYXRpb24gRmllbGRz
+OgpGaWVsZCBOYW1lOiBST1lBTFRZX0JBU0VfS0VZIApGaWVsZCBEZXNjcmlwdGlvbjogUm95YWx0
+eSBCYXNlCkV4YW1wbGU6IDogRU5USVRZX0VCSVQKCkZpZWxkIE5hbWU6IERFU0NSSVBUSU9OCkZp
+ZWxkIERlc2NyaXB0aW9uOiBSb3lhbHR5IEJhc2UgRGVzY3JpcHRpb24KRXhhbXBsZTogRUJJVCBv
+ZiB0aGUgRW50aXR5CgpGaWVsZCBOYW1lOiBXT1JLRkxPV19JRApGaWVsZCBEZXNjcmlwdGlvbjog
+V29ya2Zsb3cgSUQKCkZpZWxkIE5hbWU6IFdPUktGTE9XX1NUQVRVUwpGaWVsZCBEZXNjcmlwdGlv
+bjogV29ya2Zsb3cgU3RhdHVzCkV4YW1wbGU6IERyYWZ0LEFwcHJvdmVkLFJlamVjdGVkLEZpbmFs
+aXplZAo=</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

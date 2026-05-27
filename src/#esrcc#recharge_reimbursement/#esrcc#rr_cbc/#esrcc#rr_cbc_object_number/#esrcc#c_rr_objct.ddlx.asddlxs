@@ -1,0 +1,158 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'RR Object',
+                  typeNamePlural: 'RR Objects',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement Objects', value: 'ObjectNumber' },
+                  description.value: 'Description' }
+
+annotate view /ESRCC/C_RR_Objct with
+
+{
+  @UI.facet: [ {
+    id: 'CE',
+    type: #COLLECTION,
+    purpose: #STANDARD,
+    position: 1
+  },
+  {
+    id: '/ESRCC/I_RR_Objct',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    parentId: 'CE',
+    label: 'General Information',
+    position: 1
+  },
+  {
+    id: 'Admin',
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'AdminGroup',
+    label: 'Admin Information',
+    position: 2
+  },
+  {
+    id: '/ESRCC/I_RR_ObjctText',
+    type: #LINEITEM_REFERENCE,
+    parentId: 'CE',
+    position: 3,
+    targetElement: '_ObjctText'
+  } ]
+
+  @UI.hidden: true
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 1 },
+                  { type: #FOR_ACTION, dataAction: 'CopyObject', label: 'Copy', invocationGrouping: #CHANGE_SET } ]
+  Uuid;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 3 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  @UI.textArrangement: #TEXT_LAST
+  SystemId;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_LegalEntityAll_F4', element: 'Legalentity' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 4 } ]
+  @UI.lineItem: [ { position: 4 } ]
+  @UI.textArrangement: #TEXT_LAST
+  LegalEntity;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_COMPANYCODES_F4', element: 'Ccode' },
+                                        additionalBinding: [ { localElement: 'SystemId',    element: 'Sysid'       },
+                                                             { localElement: 'LegalEntity', element: 'Legalentity' } ],
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 5 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  @UI.textArrangement: #TEXT_LAST
+  CompanyCode;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RROBJECTS', element: 'Sourceobject' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 6 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ObjectType;
+
+  @UI.identification: [ { position: 7 } ]
+  @UI.lineItem: [ { position: 7 } ]
+  ObjectNumber;
+
+  @UI.identification: [ { position: 9 } ]
+  @UI.lineItem: [ { position: 9 } ]
+  @EndUserText.label: 'Extract TX Data'
+  ActiveFlag;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_FunctionalArea_F4', element: 'FunctionalArea' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 10 } ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.textArrangement: #TEXT_LAST
+  FunctionalArea;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_PROFITCENTER_F4', element: 'ProfitCenter' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 11 } ]
+  @UI.lineItem: [ { position: 11 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ProfitCenter;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_BUSINESSDIV_F4', element: 'BusinessDivision' },
+                                        useForValidation: true } ]
+  @UI.identification: [ { position: 12 } ]
+  @UI.lineItem: [ { position: 12 } ]
+  @UI.textArrangement: #TEXT_LAST
+  BusinessDivision;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SIGN_FOR_VALUE', element: 'Sign' }, useForValidation: true}]
+  @UI.identification: [ { position: 13 } ]
+  @UI.lineItem: [ { position: 13 } ]
+  @UI.textArrangement: #TEXT_LAST
+  itemsign;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_ACCOUNTING_TYPE', element: 'AccountingType' }, useForValidation: true }]
+  @UI.identification: [ { position: 14 } ]
+  @UI.lineItem: [ { position: 14 } ]
+  @UI.textArrangement: #TEXT_LAST
+  accountingtype;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 15 } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 20 } ]
+  @UI.lineItem: [ { position: 16 } ]
+  CreatedAt;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 30 } ]
+  @UI.lineItem: [ { position: 17 } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 40 } ]
+  @UI.lineItem: [ { position: 18 } ]
+  LastChangedAt;
+
+  @UI.identification: [ { hidden: true, position: 8 } ]
+  @UI.lineItem: [ { position: 8 } ]
+  Description;
+  
+  @UI.hidden: true
+  SysidDescription;
+  @UI.hidden: true
+  CompanyCodeDescription;
+  @UI.hidden: true
+  LegalEntityDescription;
+  @UI.hidden: true
+  ObjectDescription;
+  @UI.hidden: true
+  FunctionalAreaDescription;
+  @UI.hidden: true
+  ProfitCenterDescription;
+  @UI.hidden: true
+  BusinessDivisionDescription;
+  @UI.hidden: true
+  itemsigndescription;
+  @UI.hidden: true
+  accountingtypedescription;
+}

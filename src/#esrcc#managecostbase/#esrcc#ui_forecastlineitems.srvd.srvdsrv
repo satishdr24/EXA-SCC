@@ -1,0 +1,4 @@
+@EndUserText.label: 'Forecast Line Items'
+define service /ESRCC/UI_FORECASTLINEITEMS {
+  expose /ESRCC/C_FORECAST_LINEITEMS as forecastlineitems;
+}

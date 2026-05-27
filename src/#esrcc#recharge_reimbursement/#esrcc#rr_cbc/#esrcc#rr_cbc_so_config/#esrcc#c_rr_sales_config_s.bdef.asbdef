@@ -1,0 +1,28 @@
+projection;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_RR_Sales_Config_S alias RR_Sales_ConfigAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _RR_Sales_Config { create; with draft; }
+}
+
+define behavior for /ESRCC/C_RR_Sales_Config alias RR_Sales_Config
+extensible
+{
+  use update;
+  use delete;
+
+  use action CopyRR_Sales_Config;
+
+  use association _RR_Sales_ConfigAll { with draft; }
+}

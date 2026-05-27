@@ -1,0 +1,5 @@
+define service /ESRCC/UI_RR_OBJECTTYPE {
+  expose /ESRCC/C_RR_OBJECTTYPE_S as ObjectTypeAll;
+  expose /ESRCC/C_RR_OBJECTTYPE as ObjectType;
+  expose /ESRCC/C_RR_OBJECTTYPETEXT as ObjectTypeText;
+}

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>/ESRCC/RR</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Recharge/Reimbursement</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>&amp;1 &amp;2 &amp;3 &amp;4</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>No authorization to send for SO Creation</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Entered &apos;Group By&apos; is invalid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>No lines exist with status &apos;Available&apos;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Records sent for SO creation. &amp;1 sales order(s) will be created.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Sales Order Number and Reference is Mandatory</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>SO Created By and Time is Mandatory</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>SO &amp;1 Updated Successfully for Reference No &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Error in Updating SO details. SO Reference No : &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>SO already Created. SO : &amp;1, SO Reference No: &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Invalid SO Reference No : &amp;1</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Please wait till the existing SO creation job completes.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/RR</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Job Scheduled for SO Creation.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

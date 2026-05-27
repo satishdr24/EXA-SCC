@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/SWITCH</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/SWITCH</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/SWITCH</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fswitch</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/SWITCH</NAME>
+       <DESCRIPTION>Maintain Switch Configuration</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gU3dpdGNoIGNvbmZpZ3VyYXRpb24uCgpUZWNobmljYWwgVGFibGUgTmFtZXM6Ci9F
+U1JDQy9TV0lUQ0ggLSBNYWluIFRhYmxlCgpSZXF1aXJlZCBjb25maWd1cmF0aW9uIGZpZWxkczoK
+CkZpZWxkIE5hbWU6IEFQUExJQ0FUSU9OCkZpZWxkIERlc2NyaXB0aW9uOiBBcHBsaWNhdGlvbiBU
+eXBlCkV4YW1wbGU6IFN0YW5kYXJkIENoYXJnZS1vdXQgLyBUcnVlLXVwIFJlY2FsY3VsYXRpb24g
+LyBBREggKEFkLWhvYyBDaGFyZ2Utb3V0KQoKRmllbGQgTmFtZTogU1dJVENIX05BTUUKRmllbGQg
+RGVzY3JpcHRpb246IFN3aXRjaCBOYW1lCkV4YW1wbGU6IFRFU1QKCkZpZWxkIE5hbWU6IEFDVElW
+RQpGaWVsZCBEZXNjcmlwdGlvbjogQWN0aXZlIGluZGljYXRvcgpFeGFtcGxlOiBZZXMgLyBObw==</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

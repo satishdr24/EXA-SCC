@@ -1,0 +1,313 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'RR Rule',
+                  typeNamePlural: 'RR Rules',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement Rules', value: 'RuleId' },
+                  description.value: 'Description' }
+
+annotate view /ESRCC/C_RR_Rule with
+
+{
+  @EndUserText.label: 'Rule ID'
+  @UI.facet: [ { id: '/ESRCC/I_RR_Rule', purpose: #STANDARD, type: #COLLECTION, position: 1 },
+               { id: '/ESRCC/I_RR_RuleText', type: #LINEITEM_REFERENCE, position: 3, targetElement: '_RuleText' },
+               { parentId: '/ESRCC/I_RR_Rule',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 label: 'General Information',
+                 position: 10 },
+               { purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: '/ESRCC/I_RR_Rule',
+                 targetQualifier: 'Source',
+                 label: 'Source',
+                 position: 30 },
+               { purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: '/ESRCC/I_RR_Rule',
+                 targetQualifier: 'Partner',
+                 label: 'Partner',
+                 position: 40 },
+               { purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: '/ESRCC/I_RR_Rule',
+                 targetQualifier: 'Validity',
+                 label: 'Validity',
+                 position: 50 },
+               { purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: '/ESRCC/I_RR_Rule',
+                 targetQualifier: 'AdminGroup',
+                 label: 'Admin Information',
+                 position: 60 } ]
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 1 },
+                  { type: #FOR_ACTION, dataAction: 'CopyRule', label: 'Copy', invocationGrouping: #CHANGE_SET } ]
+  RuleId;
+
+  @EndUserText.label: 'Description'
+  @UI.identification: [ { hidden: true, position: 2 } ]
+  @UI.lineItem: [ { position: 2 } ]
+
+  Description;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source System ID'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 10 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  @UI.textArrangement: #TEXT_LAST
+  SystemId;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_LEGALENTITY_F4', element: 'Legalentity' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Legal Entity'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 20 } ]
+  @UI.lineItem: [ { position: 4 } ]
+  @UI.textArrangement: #TEXT_LAST
+  LegalEntity;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_COMPANYCODES_PR_F4', element: 'Ccode' },
+                                        additionalBinding: [ { localElement: 'SystemId',    element: 'Sysid'       },
+                                                             { localElement: 'LegalEntity', element: 'Legalentity' } ],
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Company Code'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 30 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  @UI.textArrangement: #TEXT_LAST
+  CompanyCode;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RROBJECTS', element: 'Sourceobject' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source RR Object Type'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 40 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ObjectType;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_ObjctPr_F4', element: 'ObjectNumber' },
+                                        additionalBinding: [ { localElement: 'SystemId', element: 'Sysid' },
+                                                             { localElement: 'LegalEntity', element: 'LegalEntity'},
+                                                             { localElement: 'CompanyCode', element: 'CompanyCode' },
+                                                             { localElement: 'ObjectType', element: 'ObjectType' },
+                                                             { localElement: 'FunctionalArea',
+                                                               element: 'FunctionalArea' },
+                                                             { localElement: 'ProfitCenter',
+                                                               element: 'ProfitCenter' },
+                                                             { localElement: 'BusinessDivision',
+                                                               element: 'BusinessDivision' } ],
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source RR Object Number'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 50 } ]
+  @UI.lineItem: [ { position: 7 } ]
+  ObjectNumber;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RRMATTER_F4', element: 'SourceKeyField' },  useForValidation: true } ]
+  @EndUserText.label: 'Source Key Field'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 60 } ]
+  @UI.lineItem: [ { position: 8 } ]
+  @UI.textArrangement: #TEXT_LAST
+  KeyField;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_FunctionalArea_F4', element: 'FunctionalArea' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Functional Area'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 70 } ]
+  @UI.lineItem: [ { position: 9 } ]
+  @UI.textArrangement: #TEXT_LAST
+  FunctionalArea;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_PROFITCENTER_F4', element: 'ProfitCenter' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Profit Center'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 80 } ]
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.textArrangement: #TEXT_LAST
+  ProfitCenter;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_BUSINESSDIV_F4', element: 'BusinessDivision' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Source Business Division'
+  @UI.fieldGroup: [ { qualifier: 'Source', position: 90 } ]
+  @UI.lineItem: [ { position: 11 } ]
+  @UI.textArrangement: #TEXT_LAST
+  BusinessDivision;
+
+  @EndUserText.label: 'RR-related Material'
+  @UI.identification: [ { position: 12 } ]
+  @UI.lineItem: [ { position: 12 } ]
+  RelatedMaterial;
+
+
+  @UI.fieldGroup: [ { qualifier: 'Validity', position: 10 } ]
+  @UI.lineItem: [ { position: 13 } ]
+  Validfrom;
+
+  @UI.fieldGroup: [ { qualifier: 'Validity', position: 20 } ]
+  @UI.lineItem: [ { position: 14 } ]
+  Validto;
+
+  @UI.identification: [ { position: 15 } ]
+  @UI.lineItem: [ { position: 15 } ]
+  ActiveFlag;
+
+  @UI.hidden: true
+  @UI.lineItem: [ { position: 50 } ]
+  PartnerUuid;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Partner System ID'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 10 } ]
+  @UI.lineItem: [ { position: 26 } ]
+  @UI.textArrangement: #TEXT_LAST
+  PartnerSystemId;
+
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RECEIVINGENTITY_F4', element: 'Receivingentity' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Partner Legal Entity'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 20 } ]
+  @UI.lineItem: [ { position: 27 } ]
+  @UI.textArrangement: #TEXT_LAST
+
+  PartnerLegalEntity;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_COMPANYCODES_REC_F4', element: 'Ccode' },
+                                        additionalBinding: [ { localElement: 'PartnerSystemId', element: 'Sysid' },
+                                                             { localElement: 'PartnerLegalEntity',
+                                                               element: 'Legalentity' } ], useForValidation: true } ]
+  @EndUserText.label: 'Partner Company Code'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 30 } ]
+  @UI.lineItem: [ { position: 28 } ]
+  @UI.textArrangement: #TEXT_LAST
+
+  PartnerCompanyCode;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RROBJECTS', element: 'Sourceobject' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Partner RR Object Type'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 40 } ]
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.textArrangement: #TEXT_LAST
+  PartnerObjectType;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_ObjctRec_F4', element: 'ObjectNumber' },
+                                        additionalBinding: [ { localElement: 'PartnerSystemId', element: 'Sysid' },
+                                                             { localElement: 'PartnerLegalEntity',
+                                                               element: 'LegalEntity' },
+                                                             { localElement: 'PartnerCompanyCode',
+                                                               element: 'CompanyCode' },
+                                                             { localElement: 'PartnerObjectType', element: 'ObjectType' },
+                                                             { localElement: 'PartnerFunctionalArea',
+                                                               element: 'FunctionalArea',
+                                                               usage: #RESULT },
+                                                             { localElement: 'PartnerProfitCenter',
+                                                               element: 'ProfitCenter',
+                                                               usage: #RESULT },
+                                                             { localElement: 'PartnerBusinessDivision',
+                                                               element: 'BusinessDivision',
+                                                               usage: #RESULT } ],
+                                        useForValidation: true } ]
+  @EndUserText.label: 'Partner RR Object Number'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 50 } ]
+  @UI.lineItem: [ { position: 31 } ]
+  PartnerObjectNumber;
+
+  @EndUserText.label: 'Partner Functional Area'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 60 } ]
+  @UI.lineItem: [ { position: 32 } ]
+  @UI.textArrangement: #TEXT_LAST
+  PartnerFunctionalArea;
+
+  @EndUserText.label: 'Partner Profit Center'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 70 } ]
+  @UI.lineItem: [ { position: 33 } ]
+  @UI.textArrangement: #TEXT_LAST
+  PartnerProfitCenter;
+
+  @EndUserText.label: 'Partner Business Division'
+  @UI.fieldGroup: [ { qualifier: 'Partner', position: 80 } ]
+  @UI.lineItem: [ { position: 34 } ]
+  @UI.textArrangement: #TEXT_LAST
+  PartnerBusinessDivision;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_SALESORDER_CREATED', element: 'Salesorder_created' },
+                                        useForValidation: true } ]
+  @EndUserText.label: 'SO Creation By'
+  @EndUserText.quickInfo: 'Sales Order Creation for Debit Notes/Credit Notes in ERP system of'
+  @UI.identification: [ { position: 35 } ]
+  @UI.lineItem: [ { position: 35 } ]
+  @UI.textArrangement: #TEXT_LAST
+  SalesOrderCreation;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 40 } ]
+  @UI.lineItem: [ { position: 40 } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 41 } ]
+  @UI.lineItem: [ { position: 41 } ]
+  CreatedAt;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 42 } ]
+  @UI.lineItem: [ { position: 42 } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 43 } ]
+  @UI.lineItem: [ { position: 43 } ]
+  LastChangedAt;
+
+  @UI.hidden: true
+  SysidDescription;
+
+  @UI.hidden: true
+  CompanyCodeDescription;
+
+  @UI.hidden: true
+  LegalEntityDescription;
+
+  @UI.hidden: true
+  ObjectDescription;
+
+  @UI.hidden: true
+  FunctionalAreaDescription;
+
+  @UI.hidden: true
+  ProfitCenterDescription;
+
+  @UI.hidden: true
+  BusinessDivisionDescription;
+
+  @UI.hidden: true
+  SourceDescription;
+
+  @UI.hidden: true
+  PartnerSysidDescription;
+
+  @UI.hidden: true
+  PartnerCompanyCodeDescription;
+
+  @UI.hidden: true
+  PartnerLegalEntityDescription;
+
+  @UI.hidden: true
+  PartnerFunctionalAreaDescr;
+
+  @UI.hidden: true
+  PartnerProfitCenterDescription;
+
+  @UI.hidden: true
+  PartnerBusinessDivisionDescr;
+
+  @UI.hidden: true
+  PartnerObjectDescription;
+
+  @UI.hidden: true
+  SOCreationDescription;
+}

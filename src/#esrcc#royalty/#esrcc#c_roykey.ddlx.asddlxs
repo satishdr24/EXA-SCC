@@ -1,0 +1,92 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Royalty Base',
+    typeNamePlural: 'Royalty Base',
+    title: {
+      type: #STANDARD,
+      value: 'RoyaltyBaseKey'
+    }
+  }
+}
+annotate view /ESRCC/C_RoyKey with
+{
+  @UI.facet: [ {
+    id: 'CE',
+    type: #COLLECTION,
+    position: 1
+  },
+  {
+    id: 'Workflow',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    label: 'Workflow Information',
+    targetQualifier: 'WorkflowGroup',
+    parentId: 'CE',
+    position: 20
+  },
+  {
+    id: 'Admin',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'AdminGroup',
+    label: 'Admin Information',
+    position: 30
+  },
+  {
+    id: '/ESRCC/I_RoyKeyText',
+    type: #LINEITEM_REFERENCE,
+    parentId: 'CE',
+    position: 40,
+    targetElement: '_RoyaltyKeyText'
+  } ]
+
+  @UI.lineItem: [ { position: 1 },
+                  { type: #FOR_ACTION, dataAction: 'Copy', label: 'Copy', invocationGrouping: #CHANGE_SET, position: 10 },
+                  { type: #FOR_ACTION, position: 20, dataAction: 'Submit', label: 'Submit', invocationGrouping: #CHANGE_SET },
+                  { type: #FOR_ACTION, position: 30, dataAction: 'Finalize', label: 'Finalize', invocationGrouping: #CHANGE_SET },
+                  { type: #FOR_ACTION, position: 40, dataAction: 'Reopen', label: 'Re-open', invocationGrouping: #CHANGE_SET } ]
+  RoyaltyBaseKey;
+
+  @UI.lineItem: [ { position: 3 } ]
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 10 }]
+  WorkflowId;
+
+  @UI.lineItem: [ { position: 4, cssDefault.width: '10rem', criticality: 'WorkflowStatusCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 20, criticality: 'WorkflowStatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_STATUS', element: 'Status' } }]
+  @UI.textArrangement: #TEXT_LAST
+  @EndUserText.label: 'Workflow Status'
+  WorkflowStatus;
+
+  @UI.lineItem: [{ hidden: true }]
+  CommentId;
+
+  @UI.lineItem: [{ hidden: true }]
+  @UI.multiLineText: true
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 30 }]
+  Comments;
+
+  @UI.lineItem: [ { position: 5 } ]
+  @UI.fieldGroup: [{ position: 1, qualifier: 'AdminGroup' }]
+  CreatedBy;
+
+  @UI.lineItem: [ { position: 6, cssDefault.width: '9.5rem' } ]
+  @UI.fieldGroup: [{ position: 2, qualifier: 'AdminGroup' }]
+  CreatedAt;
+
+  @UI.lineItem: [ { position: 7  } ]
+  @UI.fieldGroup: [{ position: 3, qualifier: 'AdminGroup' }]
+  LastChangedBy;
+
+  @UI.lineItem: [{ position: 8, cssDefault.width: '9.5rem' }]
+  @UI.fieldGroup: [{ position: 4, qualifier: 'AdminGroup' }]
+  LastChangedAt;
+
+  @UI.lineItem: [ { position: 2 } ]
+  Description;
+
+  @UI.hidden: true
+  WorkflowStatusCriticality;
+}

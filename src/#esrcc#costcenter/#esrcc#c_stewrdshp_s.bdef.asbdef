@@ -1,0 +1,54 @@
+projection;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_Stewrdshp_S alias StewardshipAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _Stewardship { create; with draft; }
+}
+
+define behavior for /ESRCC/C_Stewrdshp alias Stewardship
+extensible
+{
+  use update;
+  use delete;
+
+  use action Copy;
+  use action Submit;
+  use action Finalize;
+  use action Reopen;
+
+  use association _StewardshipAll { with draft; }
+  use association _ServiceProduct { create; with draft; }
+}
+
+define behavior for /ESRCC/C_StwdSp alias ServiceProduct
+extensible
+{
+  use update;
+  use delete;
+  use action Copy;
+
+  use association _StewardshipAll { with draft; }
+  use association _Stewardship { with draft; }
+  use association _ServiceReceiver { create; with draft; }
+}
+
+define behavior for /ESRCC/C_StwdSpRec alias ServiceReceiver
+extensible
+{
+  use update;
+  use delete;
+
+  use association _StewardshipAll { with draft; }
+  use association _ServiceProduct { with draft; }
+}

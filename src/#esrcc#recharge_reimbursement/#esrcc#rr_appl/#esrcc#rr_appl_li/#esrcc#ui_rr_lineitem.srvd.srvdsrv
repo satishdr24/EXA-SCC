@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service definition for /ESRCC/C_RR_LI'
+define service /ESRCC/UI_RR_LINEITEM {
+  expose /ESRCC/C_RR_LI           as LineItem;
+  expose /ESRCC/C_RR_LI_SO        as SO;
+  expose /ESRCC/I_RR_SO_Config_F4 as GroupBy;
+}

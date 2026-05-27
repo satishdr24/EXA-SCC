@@ -1,0 +1,5 @@
+define service /ESRCC/UI_RR_RULE {
+  expose /ESRCC/C_RR_Rule_S   as RuleAll;
+  expose /ESRCC/C_RR_Rule     as Rule;
+  expose /ESRCC/C_RR_RuleText as RuleText;
+}

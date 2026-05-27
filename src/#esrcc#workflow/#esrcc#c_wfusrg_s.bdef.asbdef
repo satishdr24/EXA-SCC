@@ -1,0 +1,38 @@
+projection;
+strict;
+extensible;
+use draft;
+
+define behavior for /ESRCC/C_WfUsrG_S alias UserGroupAll
+extensible
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _UserGroup { create; with draft; }
+}
+
+define behavior for /ESRCC/C_WfUsrG alias UserGroup
+extensible
+{
+  use update;
+  use delete;
+  use action Copy;
+
+  use association _UserGroupAll { with draft; }
+  use association _UserMapping { create; with draft; }
+}
+
+define behavior for /ESRCC/C_WfUsrM alias UserMapping
+extensible
+{
+  use update;
+  use delete;
+
+  use association _UserGroupAll { with draft; }
+  use association _UserGroup { with draft; }
+}

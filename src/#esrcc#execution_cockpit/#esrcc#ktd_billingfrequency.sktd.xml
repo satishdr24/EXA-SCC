@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/BILLINGFREQUENCY</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/BILLINGFREQUENCY</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/BILLINGFREQUENCY</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fbillingfrequency</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/BILLINGFREQUENCY</NAME>
+       <DESCRIPTION>Maintain Billing Frequencies</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gR2VuZXJhbCBmcmVxdWVuY3kgbGlzdCB3aGljaCB3aWxsIGJlIHVzZWQgZm9yIGNv
+bmZpZ3VyYXRpb24gQ29zdCBPYmplY3RzIEJpbGxpbmcgRnJlcXVlbmN5LgoKVGVjaG5pY2FsIFRh
+YmxlIE5hbWVzOgovRVNSQ0MvQklMTEZSRVEgIC0gTWFpbiBUYWJsZQoKUmVxdWlyZWQgQ29uZmln
+dXJhdGlvbiBGaWVsZHM6CkZpZWxkIE5hbWU6IEJJTExJTkdGUkVRVUVOQ1kKRmllbGQgRGVzY3Jp
+cHRpb246IEJpbGxpbmcgRnJlcXVlbmN5CkV4YW1wbGU6IEFubnVhbGx5LCBIYWxmIFllYXIsIFF1
+YXJ0ZXJseSwgTW9udGhseQoKRmllbGQgTmFtZTogQklMTElOR1ZBTFVFCkZpZWxkIERlc2NyaXB0
+aW9uOiBCaWxsaW5nIFBlcmlvZApFeGFtcGxlOiBZZWFyLCBIYWxmIFllYXIgMSwgUXVhcnRlciAx
+LCBKYW4KCkZpZWxkIE5hbWU6IFBPUEVSCkZpZWxkIERlc2NyaXB0aW9uOiBQb3N0aW5nIFBlcmlv
+ZChTcGVjaWZpYyBzaW5nbGUgbW9udGgpCkV4YW1wbGU6IDogMSwgMiwgMywgNCwgNSA=</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/LEDGER</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/LEDGER</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/LEDGER</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fledger</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/LEDGER</NAME>
+       <DESCRIPTION>Maintain Ledgers</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gTGVkZ2VyIGxpc3QgcmVxdWlyZWQgZm9yIEV4dHJhY3Rpb24gcHJvY2Vzcy4KClRl
+Y2huaWNhbCBUYWJsZSBOYW1lczoKL0VTUkNDL0xFREdFUiAgLSBNYWluIFRhYmxlCi9FU1JDQy9M
+RURHRVJfVCAtIFRleHQgVGFibGUKClJlcXVpcmVkIENvbmZpZ3VyYXRpb24gRmllbGRzOgpGaWVs
+ZCBOYW1lOiBMRURHRVIKRmllbGQgRGVzY3JpcHRpb246IExlZGdlcgpFeGFtcGxlOiAwTAoKRmll
+bGQgTmFtZTogREVTQ1JJUFRJT04KRmllbGQgRGVzY3JpcHRpb246IExlZGdlciBEZXNjcmlwdGlv
+bgpFeGFtcGxlOiBHcm91cCBHQUFQCgpGaWVsZCBOYW1lOiBBQ1RJVkUKRmllbGQgRGVzY3JpcHRp
+b246IEFjdGl2ZQpFeGFtcGxlOiBZZXMvTm8=</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

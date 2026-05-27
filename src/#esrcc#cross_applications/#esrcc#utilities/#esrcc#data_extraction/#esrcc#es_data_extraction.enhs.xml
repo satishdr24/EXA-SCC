@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_DEF</TOOL>
+   <BADI_DATA>
+    <ENH_BADI_DATA>
+     <BADI_NAME>/ESRCC/BADI_DATA_EXTRACTION</BADI_NAME>
+     <INTERFACE_NAME>/ESRCC/IF_BADI_DATA_EXTRACTION</INTERFACE_NAME>
+     <CONTEXT_MODE>N</CONTEXT_MODE>
+     <BADI_SHORTTEXT>BADI For SCC Data Extraction</BADI_SHORTTEXT>
+     <FILTERS>
+      <ENH_BADI_FILTER>
+       <FILTER_NAME>OBJECT_TYPE</FILTER_NAME>
+       <FILTER_TYPE>C</FILTER_TYPE>
+       <FILTERTEXT>Extraction Object Type</FILTERTEXT>
+      </ENH_BADI_FILTER>
+     </FILTERS>
+    </ENH_BADI_DATA>
+   </BADI_DATA>
+  </asx:values>
+ </asx:abap>
+</abapGit>

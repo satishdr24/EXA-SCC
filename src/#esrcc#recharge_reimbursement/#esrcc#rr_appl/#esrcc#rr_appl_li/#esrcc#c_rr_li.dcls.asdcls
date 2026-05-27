@@ -1,0 +1,7 @@
+@EndUserText.label: 'RR Lineitem Access Control'
+@MappingRole: true
+define role /ESRCC/C_RR_LI {
+   grant select on /ESRCC/C_RR_LI
+     where inheriting conditions from entity /ESRCC/I_RR_LI;
+
+}

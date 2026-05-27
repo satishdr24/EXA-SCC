@@ -1,0 +1,17 @@
+unmanaged implementation in class /esrcc/bp_i_costbase_chargeout unique;
+strict ( 1 );
+extensible;
+
+define behavior for /ESRCC/I_COSTBASE_CHARGEOUT alias CostbaseChargeout
+//persistent table /ESRCC/CB_STW
+lock master
+authorization master ( instance )
+extensible
+//etag master LocalLastChangedAt
+{
+//  create;
+//  update;
+//  delete;
+   action ( features : instance, precheck, authorization : update ) deleteadhochargeout ;
+
+}

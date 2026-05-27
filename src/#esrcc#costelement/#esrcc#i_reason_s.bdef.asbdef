@@ -1,0 +1,103 @@
+managed with additional save implementation in class /ESRCC/BP_I_REASON unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_Reason_S alias ReasonAll
+draft table /esrcc/d_reaso_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _Reason { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_Reason alias Reason
+persistent table /esrcc/reason
+draft table /esrcc/d_reason
+etag master LocalLastChangedAt
+lock dependent by _ReasonAll
+authorization dependent by _ReasonAll
+extensible
+{
+  field ( mandatory : create )
+  Reasonid;
+
+  field ( readonly )
+  SingletonID, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  field ( readonly : update )
+  Reasonid;
+
+  update ( features : global );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyReasonP [1];
+
+  mapping for /esrcc/reason corresponding extensible
+    {
+      Reasonid           = REASONID;
+      Calculationusage   = CALCULATIONUSAGE;
+      Defaultflag        = DEFAULTFLAG;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ReasonAll { with draft; }
+  association _ReasonText { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_ReasonText alias ReasonText
+persistent table /esrcc/reasont
+draft table /esrcc/d_reasont
+etag master LocalLastChangedAt
+lock dependent by _ReasonAll
+authorization dependent by _ReasonAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  Reasonid;
+
+  field ( readonly : update )
+  Spras;
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/reasont corresponding extensible
+    {
+      Spras              = SPRAS;
+      Reasonid           = REASONID;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _ReasonAll { with draft; }
+  association _Reason { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

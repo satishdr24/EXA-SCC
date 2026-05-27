@@ -1,0 +1,81 @@
+managed with additional save implementation in class /ESRCC/BP_I_CHGFCA_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_Chgfca_S alias RuleAll
+draft table /esrcc/d_chgfc_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation Rule~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _Rule { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_Chgfca alias Rule
+persistent table /esrcc/chgfca
+draft table /esrcc/d_chgfca
+etag master LocalLastChangedAt
+lock dependent by _RuleAll
+authorization dependent by _RuleAll
+extensible
+{
+  field ( readonly )
+  SingletonID,
+  Uuid,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  Uuid;
+
+  field ( mandatory : create, readonly : update )
+  Serviceproduct, Validfrom;
+
+  field ( mandatory )
+  ChargeoutRuleId, Validto;
+
+  update ( features : global, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyChgfcaP [1];
+
+  mapping for /esrcc/chgfca corresponding extensible
+    {
+      Uuid               = UUID;
+      Serviceproduct     = SERVICEPRODUCT;
+      Validfrom          = VALIDFROM;
+      Validto            = VALIDTO;
+      ChargeoutRuleId    = CHARGEOUT_RULE_ID;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RuleAll { with draft; }
+  validation ValidateData on save { create; update; }
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

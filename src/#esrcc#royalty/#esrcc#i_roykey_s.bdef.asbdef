@@ -1,0 +1,126 @@
+managed with additional save implementation in class /ESRCC/BP_I_ROYKEY_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RoyKey_S alias RoyKeyAll
+draft table /esrcc/d_royke_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _RoyaltyKey { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RoyKey alias RoyaltyKey
+persistent table /esrcc/roykey
+draft table /esrcc/d_roykey
+etag master LocalLastChangedAt
+lock dependent by _RoyKeyAll
+authorization dependent by _RoyKeyAll
+extensible
+{
+  field ( mandatory : create )
+  RoyaltyBaseKey;
+
+  field ( readonly )
+  WorkflowId,
+  WorkflowStatus,
+  Comments,
+  SingletonID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  RoyaltyBaseKey;
+
+
+  update ( features : instance );
+  delete ( features : instance );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyRoyKeyP [1];
+
+  mapping for /esrcc/roykey corresponding extensible
+    {
+      RoyaltyBaseKey     = ROYALTY_BASE_KEY;
+      WorkflowId         = WORKFLOW_ID;
+      WorkflowStatus     = WORKFLOW_STATUS;
+      CommentId          = COMMENT_ID;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RoyKeyAll { with draft; }
+  association _RoyaltyKeyText { create ( features : instance ); with draft; }
+
+  action ( features : instance ) Submit parameter /ESRCC/C_COMMENT result [1] $self;
+  action ( features : instance ) Finalize result [1] $self;
+  action ( features : instance ) Reopen result [1] $self;
+
+//  determination UpdateInternalWorkflowStatus on modify { field RoyaltyBaseKey; }
+  determination UpdateWorkflowStatus on save { field WorkflowInternalStatus; }
+  determination UpdateComment on save { field Comments; }
+  determination TriggerWorkflow on save { field WorkflowStatus; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_RoyKeyText alias RoyaltyKeyText
+persistent table /esrcc/roykeyt
+draft table /esrcc/d_roykeyt
+etag master LocalLastChangedAt
+lock dependent by _RoyKeyAll
+authorization dependent by _RoyKeyAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  RoyaltyBaseKey,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : instance );
+  delete ( features : instance );
+
+  mapping for /esrcc/roykeyt corresponding extensible
+    {
+      Spras              = SPRAS;
+      RoyaltyBaseKey     = ROYALTY_BASE_KEY;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RoyKeyAll { with draft; }
+  association _RoyaltyKey { with draft; }
+
+  determination UpdateInternalWorkflowStatus on modify { create; update; delete; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

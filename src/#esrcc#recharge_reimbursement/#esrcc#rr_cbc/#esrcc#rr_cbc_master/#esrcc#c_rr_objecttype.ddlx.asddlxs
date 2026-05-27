@@ -1,0 +1,60 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'RR Object Type',
+                  typeNamePlural: 'RR Object Types',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement Object Types', value: 'ObjectType' },
+                  description.value: 'Description' }
+
+annotate view /ESRCC/C_RR_ObjectType with
+
+{
+  @UI.facet: [ { id: 'CE', type: #COLLECTION, purpose: #STANDARD, position: 1 },
+               { id: 'General',
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'General',
+                 label: 'General Information',
+                 position: 2 },
+               { id: 'Admin',
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'AdminGroup',
+                 label: 'Admin Information',
+                 position: 3 },
+               { id: '/ESRCC/I_RR_ObjectTypeText',
+                 type: #LINEITEM_REFERENCE,
+                 parentId: 'CE',
+                 position: 4,
+                 targetElement: '_ObjectTypeText' } ]
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 10 },
+                  { type: #FOR_ACTION, dataAction: 'CopyObjectType', label: 'Copy', invocationGrouping: #CHANGE_SET } ]
+  ObjectType;
+
+  @UI.identification: [ { hidden: true, position: 2 } ]
+  @UI.lineItem: [ { position: 20 } ]
+  Description;
+
+  @Consumption.valueHelpDefinition: [ { entity: { name: '/ESRCC/I_RR_Accounting_Type_F4', element: 'AccountingType' } } ]
+  @UI.identification: [ { position: 3 } ]
+  @UI.fieldGroup: [ { qualifier: 'General', position: 10 } ]
+  @UI.lineItem: [ { position: 25 } ]
+  @UI.textArrangement: #TEXT_LAST
+  AccountingType;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 30 } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 40 } ]
+  CreatedAt;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 50 } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 60 } ]
+  LastChangedAt;
+}

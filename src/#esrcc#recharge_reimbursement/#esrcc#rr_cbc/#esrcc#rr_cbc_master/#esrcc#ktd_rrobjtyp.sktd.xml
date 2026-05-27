@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/RR_OBJTYP</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/RR_OBJTYP</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/RR_OBJTYP</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2frr_objtyp</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/RR_OBJTYP</NAME>
+       <DESCRIPTION>Maintain Recharge/Reimbursement  Object Types</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gUmVjaGFyZ2UvUmVpbWJ1cnNlbWVudCBTb3VyY2UgT2JqZWN0IFR5cGVzLgoKVGVj
+aG5pY2FsIFRhYmxlIE5hbWVzOgovRVNSQ0MvUlJfT0JKVFlQIC0gTWFpbiBUYWJsZQovRVNSQ0Mv
+UlJfT0JKVFlQVCAtIFRleHQgVGFibGUKClJlcXVpcmVkIGNvbmZpZ3VyYXRpb24gZmllbGRzOgoK
+RmllbGQgTmFtZTogT0JKRUNUX1RZUEUKRmllbGQgRGVzY3JpcHRpb246IFJlY2hhcmdlL1JlaW1i
+dXJzZW1lbnQgU291cmNlIE9iamVjdCBUeXBlCkV4YW1wbGU6IEJQCgpGaWVsZCBOYW1lOiBERVND
+UklQVElPTgpGaWVsZCBEZXNjcmlwdGlvbjogUmVjaGFyZ2UvUmVpbWJ1cnNlbWVudCBTb3VyY2Ug
+T2JqZWN0IFR5cGUgRGV0YWlscwpFeGFtcGxlOiBCdXNpbmVzcyBQYXJ0bmVyCgpGaWVsZCBOYW1l
+OiBBQ0NPVU5USU5HX1RZUEUKRmllbGQgRGVzY3JpcHRpb246IFJlY2hhcmdlL1JlaW1idXJzZW1l
+bnQgQWNjb3VudGluZyBUeXBlIApFeGFtcGxlOiBCUyAoQmFsYW5jZSBTaGVldCBBY2NvdW50KSwg
+UG5MIChQcm9maXQgYW5kIExvc3MgQWNjb3VudCkKCg==</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

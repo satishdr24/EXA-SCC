@@ -1,0 +1,77 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'RR Sales Configuration',
+                  typeNamePlural: 'RR SO Group by Configuration',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement SO Configuration', value: 'GroupByKey' } }
+
+annotate view /ESRCC/C_RR_Sales_Config with
+
+{
+  @UI.facet: [ { id: 'CE', type: #COLLECTION, purpose: #STANDARD },
+               { id: 'Generalinfo',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'GeneralGroup',
+                 label: 'General Information',
+                 position: 1 },
+               { id: 'Admin',
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'AdminGroup',
+                 label: 'Admin Information',
+                 position: 2 } ]
+  @UI.lineItem: [ { position: 1 },
+                  { type: #FOR_ACTION, dataAction: 'CopyRR_Sales_Config', label: 'Copy', invocationGrouping: #CHANGE_SET } ]
+  GroupByKey;
+
+  @EndUserText.label: 'Group By Header'
+  @UI.fieldGroup: [ { position: 1, qualifier: 'GeneralGroup' } ]
+  @UI.identification: [ { position: 2 } ]
+  @UI.lineItem: [ { position: 2 } ]
+  GroupBy;
+
+  @EndUserText.label: 'Group By Header Description'
+  @UI.fieldGroup: [ { position: 2, qualifier: 'GeneralGroup' } ]
+  @UI.identification: [ { position: 3 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  GroupByDescription;
+
+  @EndUserText.label: 'Group By Item'
+  @UI.fieldGroup: [ { position: 3, qualifier: 'GeneralGroup' } ]
+  @UI.identification: [ { position: 4 } ]
+  @UI.lineItem: [ { position: 4 } ]
+  GroupByItem;
+
+  @EndUserText.label: 'Group By Item Description'
+  @UI.fieldGroup: [ { position: 4, qualifier: 'GeneralGroup' } ]
+  @UI.identification: [ { position: 5 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  GroupByItemDescription;
+
+  @EndUserText.label: 'Item Count'
+  @UI.fieldGroup: [ { position: 5, qualifier: 'GeneralGroup' } ]
+  @UI.identification: [ { position: 6 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  ItemCount;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.identification: [ { position: 16 } ]
+  @UI.lineItem: [ { position: 16 } ]
+  CreatedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.identification: [ { position: 27 } ]
+  @UI.lineItem: [ { position: 27 } ]
+  CreatedAt;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.identification: [ { position: 38 } ]
+  @UI.lineItem: [ { position: 38 } ]
+  LastChangedBy;
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.identification: [ { position: 49 } ]
+  @UI.lineItem: [ { position: 49 } ]
+  LastChangedAt;
+}

@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName: 'RR Accounting Type',
+                  typeNamePlural: 'RR Accounting Types',
+                  title: { type: #STANDARD, label: 'Recharge/Reimbursement Accounting Types', value: 'AccountingType' },
+                  description.value: 'Description' }
+
+annotate view /ESRCC/C_RR_Accounting_Type with
+
+{
+  @UI.facet: [ { id: 'CE', type: #COLLECTION, position: 1 },
+               { id: '/ESRCC/I_RR_Accounting_Type',
+                 purpose: #STANDARD,
+                 type: #IDENTIFICATION_REFERENCE,
+                 parentId: 'CE',
+                 label: 'General Information',
+                 position: 1 },
+               { id: 'Admin',
+                 purpose: #STANDARD,
+                 type: #FIELDGROUP_REFERENCE,
+                 parentId: 'CE',
+                 targetQualifier: 'AdminGroup',
+                 label: 'Admin Information',
+                 position: 2 },
+               { id: '/ESRCC/I_AccountingTypeText',
+                 type: #LINEITEM_REFERENCE,
+                 parentId: 'CE',
+                 position: 3,
+                 targetElement: '_AccountingTypeText' } ]
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 1 },
+                  { type: #FOR_ACTION, dataAction: 'CopyAccountingType', label: 'Copy', invocationGrouping: #CHANGE_SET } ]
+  @UI.textArrangement: #TEXT_LAST
+  AccountingType;
+
+  @EndUserText.label: 'Accounting Meaning with "+"'
+  @UI.identification: [ { position: 4 } ]
+  @UI.lineItem: [ { position: 4 } ]
+  AccMeaningWithPlus;
+
+  @EndUserText.label: 'Accounting Meaning with "-"'
+  @UI.identification: [ { position: 3 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  AccMeaningWithMinus;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  CreatedBy;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 20 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  CreatedAt;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 30 } ]
+  @UI.lineItem: [ { position: 7 } ]
+  LastChangedBy;
+
+
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 40 } ]
+  @UI.lineItem: [ { position: 8 } ]
+  LastChangedAt;
+
+  @EndUserText.label: 'Accounting Description'
+  @UI.identification: [ { hidden: true, position: 2 } ]
+  @UI.lineItem: [ { position: 2 } ]
+  Description;
+}

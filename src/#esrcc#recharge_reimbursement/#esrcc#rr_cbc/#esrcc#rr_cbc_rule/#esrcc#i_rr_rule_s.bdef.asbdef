@@ -1,0 +1,150 @@
+managed with additional save implementation in class /ESRCC/BP_I_RR_RULE_S unique;
+strict;
+extensible;
+with draft;
+
+define behavior for /ESRCC/I_RR_Rule_S alias RuleAll
+draft table /esrcc/d_rr_ru_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare { validation Rule~ValidateData; determination rule~SetUUID; }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _Rule { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_RR_Rule alias Rule
+persistent table /esrcc/rr_rule
+draft table /esrcc/d_rr_rule
+etag master LocalLastChangedAt
+lock dependent by _RuleAll
+authorization dependent by _RuleAll
+extensible
+{
+
+  field ( mandatory )
+  Validfrom, Validto,
+  PartnerSystemId,
+  PartnerLegalEntity,
+  PartnerCompanyCode,
+  PartnerObjectType,
+  PartnerObjectNumber,
+  KeyField,
+  salesordercreation;
+
+  field ( mandatory : create )
+  RuleId;
+
+  field ( readonly )
+  SingletonID,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  PartnerFunctionalArea,
+  PartnerProfitCenter,
+  PartnerBusinessDivision;
+
+
+  field ( readonly : update )
+  RuleId;
+
+
+  update ( features : instance, precheck );
+  delete ( features : global );
+
+  factory action ( features : instance ) CopyRule parameter /ESRCC/D_RR_CopyRuleP [1];
+
+  mapping for /esrcc/rr_rule corresponding extensible
+    {
+      RuleId             = RULE_ID;
+      SystemId           = SYSTEM_ID;
+      LegalEntity        = LEGAL_ENTITY;
+      CompanyCode        = COMPANY_CODE;
+      ObjectType         = OBJECT_TYPE;
+      ObjectNumber       = OBJECT_NUMBER;
+      KeyField           = KEY_FIELD;
+      FunctionalArea     = FUNCTIONAL_AREA;
+      ProfitCenter       = PROFIT_CENTER;
+      BusinessDivision   = BUSINESS_DIVISION;
+      RelatedMaterial    = RELATED_MATERIAL;
+      Validfrom          = VALIDFROM;
+      Validto            = VALIDTO;
+      ActiveFlag         = ACTIVE_FLAG;
+      PartnerUuid        = partner_uuid;
+      SalesOrderCreation = sales_order_creation;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RuleAll { with draft; }
+  association _RuleText { create ( features : global ); with draft; }
+
+  determination SetUUID on save
+  { create; field PartnerSystemId,
+    PartnerLegalEntity,
+    PartnerCompanyCode,
+    PartnerObjectType,
+    PartnerObjectNumber,
+    PartnerFunctionalArea,
+    PartnerProfitCenter,
+    PartnerBusinessDivision; }
+  validation ValidateData on save { create; update; }
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for /ESRCC/I_RR_RuleText alias RuleText
+persistent table /esrcc/rr_rulet
+draft table /esrcc/d_rr_rul2
+etag master LocalLastChangedAt
+lock dependent by _RuleAll
+authorization dependent by _RuleAll
+extensible
+{
+  field ( mandatory : create )
+  Spras;
+
+  field ( readonly )
+  SingletonID,
+  RuleId,
+  LocalLastChangedAt;
+
+  field ( readonly : update )
+  Spras;
+
+
+  update ( features : global );
+  delete ( features : global );
+
+  mapping for /esrcc/rr_rulet corresponding extensible
+    {
+      Spras              = SPRAS;
+      RuleId             = RULE_ID;
+      Description        = DESCRIPTION;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _RuleAll { with draft; }
+  association _Rule { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

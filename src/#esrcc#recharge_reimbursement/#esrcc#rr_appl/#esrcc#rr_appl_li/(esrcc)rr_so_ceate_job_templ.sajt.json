@@ -1,0 +1,19 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Recharge/Reimbursement Create SO",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "/ESRCC/RR_SO_CREATE_CATALOG"
+  },
+  "parameters": {
+    "singleValueParameters": [
+      {
+        "name": "GRP",
+        "value": ""
+      }
+    ]
+  }
+}

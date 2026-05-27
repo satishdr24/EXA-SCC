@@ -1,0 +1,41 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Recharge/Reimbursement Accounting Type",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "/ESRCC/UI_ACCOUNTINGTYP_O4",
+    "serviceName": "/ESRCC/UI_ACCOUNTINGTYP_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "AccountingTypeAll",
+    "name": "RR Accounting Type",
+    "configurationGroup": "/ESRCC/BC_GROUP12",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "AccountingTypeAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "AccountingType",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true,
+        "rowCountMode": "auto"
+      },
+      {
+        "entitySet": "AccountingTypeText",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "enableFullScreen": true
+      }
+    ]
+  }
+}

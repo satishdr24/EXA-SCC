@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/SRVTG</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/SRVTG</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/SRVTG</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fsrvtg</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/SRVTG</NAME>
+       <DESCRIPTION>Maintain Transaction Groups (Level 1)</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gVHJhbnNhY3Rpb24gR3JvdXAgbGlzdC4KClRlY2huaWNhbCBUYWJsZSBOYW1lczoK
+L0VTUkNDL1NSVlRHICAtIE1haW4gVGFibGUKL0VTUkNDL1RHVCAgICAtIFRleHQgVGFibGUKClJl
+cXVpcmVkIENvbmZpZ3VyYXRpb24gRmllbGRzOgpGaWVsZCBOYW1lOiBUUkFOU0FDVElPTkdST1VQ
+CkZpZWxkIERlc2NyaXB0aW9uOiBUcmFuc2FjdGlvbiBHcm91cCBOYW1lCkV4YW1wbGU6QUNDT1VO
+VElORwoKRmllbGQgTmFtZTogREVTQ1JJUFRJT04KRmllbGQgRGVzY3JpcHRpb246IFRyYW5zYWN0
+aW9uIEdyb3VwIERlc2NyaXB0aW9uCkV4YW1wbGU6QWNjb3VudGluZyBTZXJ2aWNlcyA=</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

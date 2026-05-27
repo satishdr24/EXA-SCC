@@ -1,0 +1,114 @@
+managed with additional save implementation in class /ESRCC/BP_I_COSTELMENETCHARACT unique;
+strict;
+with draft;
+extensible ;
+
+define behavior for /ESRCC/I_CostElmenetCharacte_S alias CostElementCharAll
+draft table /esrcc/d_cstel_s
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master ( global )
+extensible
+{
+  field ( readonly )
+  SingletonID;
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation CostElementChar~ValidateData;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _CostElementChar { create ( features : instance, precheck ); with draft; }
+}
+
+define behavior for /ESRCC/I_CostElmenetCharacte alias CostElementChar
+persistent table /esrcc/cstelmtch
+draft table /esrcc/d_cstelmt
+etag master LocalLastChangedAt
+lock dependent by _CostElementCharAll
+authorization dependent by _CostElementCharAll
+extensible
+{
+  field ( readonly )
+  SingletonID,
+  CstElmntCharUuid,
+  WorkflowId,
+  WorkflowStatus,
+  Comments,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LastChangedBy;
+
+  field ( numbering : managed )
+  CstElmntCharUuid;
+
+  field ( mandatory )
+  PostingType, UsageType, CostIndicator, ValueSource, ValidTo;
+
+  field ( readonly : update )
+  LegalEntity, CompanyCode, CostObject, CostCenter;
+
+  field ( mandatory : create, readonly : update )
+  Sysid, CostElementFrom, CostElementTo, ValidFrom;
+  //  Sysid, LegalEntity, CompanyCode, CostObject, CostCenter, Costelement, ValidFrom;
+
+  update ( features : instance, precheck );
+  delete ( features : instance );
+
+  factory action ( features : instance ) Copy parameter /ESRCC/D_CopyCostElementCharP [1];
+
+  mapping for /esrcc/cstelmtch corresponding extensible
+    {
+      CstElmntCharUuid   = CST_ELMNT_CHAR_UUID;
+      Sysid              = sysid;
+      LegalEntity        = legal_entity;
+      CompanyCode        = company_code;
+      CostObject         = cost_object;
+      CostCenter         = cost_center;
+      CostElementFrom    = costelement_from;
+      CostElementTo      = costelement_to;
+      ValidFrom          = VALID_FROM;
+      ValidTo            = VALID_TO;
+      Active             = active;
+      CostType           = COST_TYPE;
+      PostingType        = POSTING_TYPE;
+      CostIndicator      = COST_INDICATOR;
+      UsageType          = USAGE_TYPE;
+      ReasonId           = REASON_ID;
+      ValueSource        = VALUE_SOURCE;
+      WorkflowId         = WORKFLOW_ID;
+      WorkflowStatus     = WORKFLOW_STATUS;
+      CommentId          = COMMENT_ID;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    }
+
+  association _CostElementCharAll { with draft; }
+
+  action ( features : instance ) Submit parameter /ESRCC/C_COMMENT result [1] $self;
+  action ( features : instance ) Finalize result [1] $self;
+  action ( features : instance ) Reopen result [1] $self;
+
+  determination UpdateInternalWorkflowStatus on modify { field ValidTo, Active, CostType, PostingType, CostIndicator, UsageType, ReasonId, ValueSource; }
+  determination UpdateWorkflowStatus on save { field WorkflowInternalStatus; }
+  determination UpdateComment on save { field Comments; }
+  determination TriggerWorkflow on save { field WorkflowStatus; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateData on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+
+  determination SetUUID on save { create; }
+}

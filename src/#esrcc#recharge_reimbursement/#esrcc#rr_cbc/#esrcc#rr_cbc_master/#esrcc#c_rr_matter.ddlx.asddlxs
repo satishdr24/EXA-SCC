@@ -1,0 +1,75 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'RR Matter', 
+    typeNamePlural: 'RR Matters', 
+    title: {
+      type: #STANDARD, 
+      label: 'Recharge/Reimbursement Matter', 
+      value: 'RrMatter'
+    }, 
+    description.value: 'Description'
+  }
+}
+annotate view /ESRCC/C_RR_Matter with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'CopyRRMatter', 
+    label: 'Copy', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+   id: 'CE',
+    type: #COLLECTION,
+    position: 1
+  },
+  {
+    id: 'Admin',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'AdminGroup',
+    label: 'Admin Information',
+    position: 2
+  },
+  {
+    id: '/ESRCC/I_RR_MatterText', 
+    type: #LINEITEM_REFERENCE, 
+    parentId: 'CE',
+    position: 3 , 
+    targetElement: '_RRMatterText'
+  } ]
+  RrMatter;
+  
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  CreatedBy;
+  
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 4 } ]
+  CreatedAt;
+  
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  LastChangedBy;
+  
+  @UI.fieldGroup: [ { qualifier: 'AdminGroup', position: 10 } ]
+  @UI.lineItem: [ { position: 6 } ]
+  LastChangedAt;
+  
+  @UI.identification: [ {
+    hidden: true, 
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Description;
+}

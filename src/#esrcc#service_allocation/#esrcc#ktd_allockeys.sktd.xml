@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/ALLOCKEYS</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/ALLOCKEYS</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/ALLOCKEYS</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fallockeys</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/ALLOCKEYS</NAME>
+       <DESCRIPTION>Maintain Allocation Keys for Indirect Charges</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gQmFzaWMgQWxsb2NhdGlvbiBrZXlzIGxpc3Qgd2hpY2ggd2lsbCBiZSB1c2VkIGZv
+ciBzdGFuZGFyZCBDaGFyZ2UgT3V0IHJ1bGVzLgoKVGVjaG5pY2FsIFRhYmxlIE5hbWVzOgovRVNS
+Q0MvQUxMT0NLRVlTIC0gTWFpbiBUYWJsZQovRVNSQ0MvQUxMT0NLRVlUIC0gVGV4dCBUYWJsZQoK
+UmVxdWlyZWQgY29uZmlndXJhdGlvbiBmaWVsZHM6CkZpZWxkIE5hbWU6IEFMTE9DQVRJT05LRVkK
+RmllbGQgRGVzY3JpcHRpb246IEFsbG9jYXRpb24gU3BlY2lmaWMga2V5IApFeGFtcGxlOiBSRVZF
+TlVFCgpGaWVsZCBOYW1lOiBERVNDUklQVElPTgpGaWVsZCBEZXNjcmlwdGlvbjogQWxsb2NhdGlv
+biBrZXkgZGV0YWlscyAKRXhhbXBsZTogVG90YWwgUmV2ZW51ZSBvZiBMZWdhbCBFbnRpdHkKCkZp
+ZWxkIE5hbWU6IFdPUktGTE9XX0lECkZpZWxkIERlc2NyaXB0aW9uOiBXb3JrZmxvdyBJRAoKRmll
+bGQgTmFtZTogV09SS0ZMT1dfU1RBVFVTCkZpZWxkIERlc2NyaXB0aW9uOiBXb3JrZmxvdyBTdGF0
+dXMKRXhhbXBsZTogRmluYWxpemVkCgo=</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

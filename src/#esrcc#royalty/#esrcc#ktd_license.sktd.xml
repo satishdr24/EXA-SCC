@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/LICENSE</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/LICENSE</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/LICENSE</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2flicense</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/LICENSE</NAME>
+       <DESCRIPTION>Maintain Licenses</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gTGljZW5zZXMgY2hhcmFjdGVyaXN0aWNzIHVzZWQgZm9yIHJveWFsdGllcyBjYWxj
+dWxhdGlvbi4KClRlY2huaWNhbCBUYWJsZSBOYW1lczoKL0VTUkNDL0xJQ0VOU0UgLSBNYWluIFRh
+YmxlCi9FU1JDQy9MSUNFTlNFVCAtIFRleHQgVGFibGUKClJlcXVpcmVkIGNvbmZpZ3VyYXRpb24g
+ZmllbGRzOgoKRmllbGQgTmFtZTogTElDRU5TRSBJRApGaWVsZCBEZXNjcmlwdGlvbjogTGljZW5z
+ZSBJZApFeGFtcGxlOiA3NzAwMTEKCkZpZWxkIE5hbWU6IERFU0NSSVBUSU9OCkZpZWxkIERlc2Ny
+aXB0aW9uOiBEZXNjcmlwdGlvbgpFeGFtcGxlOiBTQVAgVXNlciBMaWNlbnNlcyBmb3IgQ01DSQoK
+RmllbGQgTmFtZTogTElDRU5TRSBUWVBFCkZpZWxkIERlc2NyaXB0aW9uOiBMaWNlbnNlIHR5cGUK
+RXhhbXBsZTogU1cwMSAoU29mdHdhcmUgbGljZW5zZXMgRW50ZXJwcmlzZSBFUlApCgpGaWVsZCBO
+YW1lOiBDT01QVVRBVElPTiBSVUxFCkZpZWxkIERlc2NyaXB0aW9uOiBDb21wdXRhdGlvbiBydWxl
+CkV4YW1wbGU6IDg1MjAgKDIwMCBFVVIgcGVyIFVzZXIpCgpGaWVsZCBOYW1lOiBWQUxJRCBGUk9N
+CkZpZWxkIERlc2NyaXB0aW9uOiBWYWxpZGl0eSBzdGFydCBkYXRlCgpGaWVsZCBOYW1lOiBWQUxJ
+RCBUTwpGaWVsZCBEZXNjcmlwdGlvbjogVmFsaWRpdHkgZW5kIGRhdGUK</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

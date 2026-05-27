@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <SKTD>
+    <METADATA>
+     <DESCRIPTION>Documentation for /ESRCC/EXECSTATUS</DESCRIPTION>
+     <LANGUAGE>EN</LANGUAGE>
+     <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
+    </METADATA>
+    <REF_OBJECT>
+     <TYPE>SMBC/TYP</TYPE>
+     <NAME>/ESRCC/EXECSTATUS</NAME>
+    </REF_OBJECT>
+    <ELEMENTS>
+     <item>
+      <ID>/ESRCC/EXECSTATUS</ID>
+      <REF>
+       <URI>/sap/bc/adt/bct/smbctyp/%2fesrcc%2fexecstatus</URI>
+       <TYPE>SMBC/TYP</TYPE>
+       <NAME>/ESRCC/EXECSTATUS</NAME>
+       <DESCRIPTION>Maintain Execution Cockpit Statuses</DESCRIPTION>
+      </REF>
+      <TEXT>TWFpbnRhaW4gRXhlY3V0aW9uIENvY2twaXQgU3RhdHVzIGxpc3QuCgpUZWNobmljYWwgVGFibGUg
+TmFtZXM6Ci9FU1JDQy9FWEVDX1NUICAtIE1haW4gVGFibGUKL0VTUkNDL0VYRUNTVF9UIC0gVGV4
+dCBUYWJsZQoKUmVxdWlyZWQgQ29uZmlndXJhdGlvbiBGaWVsZHM6CkZpZWxkIE5hbWU6IEFQUExJ
+Q0FUSU9OCkZpZWxkIERlc2NyaXB0aW9uOiBBcHBsaWNhdGlvbiBUeXBlIChQcm9jZXNzIG5hbWUg
+ZnJvbSAKRXhlY3V0aW9uIENvY2twaXQpCkV4YW1wbGU6IFN0YW5kYXJkIENoYXJnZS1vdXQKCkZp
+ZWxkIE5hbWU6IFNUQVRVUwpGaWVsZCBEZXNjcmlwdGlvbjogU2VxdWVuY2UgbnVtYmVyCkV4YW1w
+bGU6IDAxLCAwMiwgMDMKCkZpZWxkIE5hbWU6IERFU0NSSVBUSU9OCkZpZWxkIERlc2NyaXB0aW9u
+OiBTcGVjaWZpYyBzdGF0dXMgbmFtZQpFeGFtcGxlOiBDb3N0IExpbmUgSXRlbXMgTm90IEF2YWls
+YWJsZQoKRmllbGQgTmFtZTogQ09MT1IKRmllbGQgRGVzY3JpcHRpb246IENvbG9yIENvZGUK</TEXT>
+      <CAN_HAVE_DOCUMENTATION>X</CAN_HAVE_DOCUMENTATION>
+      <SHORTTEXT_OBLIGATION>forbidden</SHORTTEXT_OBLIGATION>
+      <LONGTEXT_OBLIGATION>optional</LONGTEXT_OBLIGATION>
+     </item>
+    </ELEMENTS>
+   </SKTD>
+  </asx:values>
+ </asx:abap>
+</abapGit>

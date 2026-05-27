@@ -1,0 +1,5 @@
+define service /ESRCC/UI_ACCOUNTINGTYPE {
+  expose /ESRCC/C_ACCOUNTINGTYPE_S as AccountingTypeAll;
+  expose /ESRCC/C_RR_ACCOUNTING_TYPE as AccountingType;
+  expose /ESRCC/C_ACCOUNTINGTYPETEXT as AccountingTypeText;
+}

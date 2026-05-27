@@ -1,0 +1,11 @@
+projection;
+strict ( 1 );
+extensible;
+
+define behavior for /ESRCC/C_RR_LI_SO //alias <alias_name>
+extensible
+{
+
+  use action CreateSO;
+  use action AcknowledgeSO;
+}

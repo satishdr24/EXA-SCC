@@ -1,0 +1,4 @@
+define service /ESRCC/UI_RR_SALES_CONFIG {
+  expose /ESRCC/C_RR_Sales_Config_S as RR_Sales_ConfigAll;
+  expose /ESRCC/C_RR_Sales_Config   as RR_Sales_Config;
+}

@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>SCC Data Upload Messages</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Data Upload for scenario &amp;1 in progress by user &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Attachment is missing, please upload Excel-file</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Scenario is mandatory</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Excel file is empty or not compatible with the table selected.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>&amp;1 record(s) from Excel file has been uploaded successfully for table &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Excel Sheet processing start.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Excel Sheet processing end.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>Invalid value for &amp;1. Please check configuration or domain values.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>Amount in Local Currency is entered as 0.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>Record cannot be updated as status is not in Approved state.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>Cost Element Character details not maintained.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>021</MSGNR>
+     <TEXT>Currency is empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>023</MSGNR>
+     <TEXT>UOM is empty.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>025</MSGNR>
+     <TEXT>Cost Object information details not maintained.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>026</MSGNR>
+     <TEXT>Record cannot be updated as status is Finalized</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>028</MSGNR>
+     <TEXT>Invalid combination: Sys ID, LE, C.Code, Object Type,Object No.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>029</MSGNR>
+     <TEXT>RR Object information details not maintained.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>030</MSGNR>
+     <TEXT>No authorization to upload file</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>031</MSGNR>
+     <TEXT>&amp;1 records read from the source file.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>032</MSGNR>
+     <TEXT>&amp;1 out of &amp;2 lines are invalid and not updated.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>033</MSGNR>
+     <TEXT>Data processing start.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>034</MSGNR>
+     <TEXT>Data processing end.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>035</MSGNR>
+     <TEXT>Records not updated as the status is not &apos;Available&apos;.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>037</MSGNR>
+     <TEXT>Invalid value for Posting Key.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>038</MSGNR>
+     <TEXT>&amp;1 is initial.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>039</MSGNR>
+     <TEXT>Invalid value for &amp;1. Please check configuration.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>040</MSGNR>
+     <TEXT>Invalid value for &amp;1. Please check domain values.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>/ESRCC/DATA_UPLOAD</ARBGB>
+     <MSGNR>041</MSGNR>
+     <TEXT>No valid data to be inserted in Database.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

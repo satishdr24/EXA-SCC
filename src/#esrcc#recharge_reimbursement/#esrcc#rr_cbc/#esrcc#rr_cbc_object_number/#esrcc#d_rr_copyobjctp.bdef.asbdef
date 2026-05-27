@@ -1,0 +1,7 @@
+abstract;
+
+define behavior for /ESRCC/D_RR_CopyObjctP
+{
+  field ( mandatory )
+  Sysid, LegalEntity, CompanyCode, object_type, object_number;
+}

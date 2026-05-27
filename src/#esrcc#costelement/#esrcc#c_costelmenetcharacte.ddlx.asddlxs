@@ -1,0 +1,249 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Cost Element Characteristic',
+    typeNamePlural: 'Cost Element Characteristics'
+//    title: {
+//      type: #STANDARD,
+//      value: 'Costelement'
+//    }
+  },
+  presentationVariant: [{
+    qualifier: 'pVariant',
+    sortOrder: [{ by: 'Sysid', direction: #ASC },
+                { by: 'LegalEntity', direction: #ASC},
+                { by: 'CompanyCode', direction: #ASC },
+                { by: 'CostObject', direction: #ASC },
+                { by: 'CostCenter', direction: #ASC },
+                { by: 'CostElementFrom', direction: #ASC },
+                { by: 'CostElementTo', direction: #ASC },
+                { by: 'ValidFrom', direction: #ASC }],
+    visualizations: [{type: #AS_LINEITEM }]
+  }]
+}
+annotate view /ESRCC/C_CostElmenetCharacte with
+{
+  @UI.facet: [ {
+    id: 'CE',
+    type: #COLLECTION,
+    position: 1
+  },
+  {
+    id: '/ESRCC/I_CostElmenetCharacte',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'General Information',
+    parentId: 'CE',
+    position: 10
+  },
+  {
+    id: 'Validity',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'ValidityGroup',
+    label: 'Validity',
+    position: 20
+  },
+  {
+    id: 'Workflow',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    label: 'Workflow Information',
+    targetQualifier: 'WorkflowGroup',
+    parentId: 'CE',
+    position: 30
+  },
+  {
+    id: 'Admin',
+    purpose: #STANDARD,
+    type: #FIELDGROUP_REFERENCE,
+    parentId: 'CE',
+    targetQualifier: 'AdminGroup',
+    label: 'Admin Information',
+    position: 40
+  } ]
+
+  @UI.hidden: true
+  @UI.lineItem: [ { type: #FOR_ACTION, dataAction: 'Copy', label: 'Copy', invocationGrouping: #CHANGE_SET, position: 10 },
+                  { type: #FOR_ACTION, position: 20, dataAction: 'Submit', label: 'Submit', invocationGrouping: #CHANGE_SET },
+                  { type: #FOR_ACTION, position: 30, dataAction: 'Finalize', label: 'Finalize', invocationGrouping: #CHANGE_SET },
+                  { type: #FOR_ACTION, position: 40, dataAction: 'Reopen', label: 'Re-open', invocationGrouping: #CHANGE_SET } ]
+  @EndUserText.label: 'Cost Element Character UUID'
+  CstElmntCharUuid;
+
+  //  @UI.hidden: true
+  //  @EndUserText.label: 'Cost Element UUID'
+  //  CostElementUuid;
+
+  @UI.identification: [ { position: 1 } ]
+  @UI.lineItem: [ { position: 1 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_SystemInformation_F4', element: 'SystemId' }, useForValidation: true }]
+  Sysid;
+
+  @UI.identification: [ { position: 2 } ]
+  @UI.lineItem: [ { position: 2 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_LegalEntityAll_F4', element: 'Legalentity' }, useForValidation: true }]
+  LegalEntity;
+
+  @UI.identification: [ { position: 3 } ]
+  @UI.lineItem: [ { position: 3 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COMPANYCODES_F4', element: 'Ccode' },
+                                       additionalBinding: [{ localElement: 'Sysid', element: 'Sysid' },
+                                                           { localElement: 'LegalEntity', element: 'Legalentity' }],
+                                       useForValidation: true }]
+
+  CompanyCode;
+
+  @UI.identification: [ { position: 4 } ]
+  @UI.lineItem: [ { position: 4, cssDefault.width: '11.5rem' } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTOBJECTS', element: 'Costobject' }, useForValidation: true }]
+  CostObject;
+
+  @UI.identification: [ { position: 5 } ]
+  @UI.lineItem: [ { position: 5 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSCEN_F4', element: 'Costcenter' },
+                                       additionalBinding: [{ localElement: 'Sysid', element: 'Sysid' },
+                                                           { localElement: 'LegalEntity', element: 'LegalEntity' },
+                                                           { localElement: 'CompanyCode', element: 'CompanyCode' },
+                                                           { localElement: 'CostObject', element: 'Costobject' }], useForValidation: true }]
+  CostCenter;
+
+
+  @UI.identification: [{ type: #AS_CONNECTED_FIELDS, valueQualifier: 'CostElementConnector', position: 6 }]
+  @UI.lineItem: [ { position: 6 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTELEMENT_F4', element: 'Costelement' },
+                                       additionalBinding: [{ localElement: 'Sysid', element: 'Sysid' }],
+                                       useForValidation: true }]
+  @UI.connectedFields: [{ name: 'CostElementFrom', qualifier: 'CostElementConnector', template: '{CostElementFrom}-{CostElementTo}', groupLabel: 'Cost Element' } ]
+  CostElementFrom;
+
+  @UI.identification: [ { position: 7, hidden: true } ]
+  @UI.lineItem: [ { position: 7 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTELEMENT_F4', element: 'Costelement' },
+                                       additionalBinding: [{ localElement: 'Sysid', element: 'Sysid' }],
+                                       useForValidation: true }]
+  @UI.connectedFields: [{ name: 'CostElementTo', qualifier: 'CostElementConnector' }]
+  CostElementTo;
+
+  @UI.lineItem: [ { position: 10 } ]
+  @UI.fieldGroup: [{ position: 1, qualifier: 'ValidityGroup' }]
+  ValidFrom;
+
+  @UI.lineItem: [ { position: 11 } ]
+  @UI.fieldGroup: [{ position: 2, qualifier: 'ValidityGroup' }]
+  ValidTo;
+
+  @UI.identification: [ { position: 12 } ]
+  @UI.lineItem: [ { position: 12 } ]
+  Active;
+
+  @UI.lineItem: [ { position: 13 } ]
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 13 }]
+  WorkflowId;
+
+  @UI.lineItem: [ { position: 14, cssDefault.width: '10rem', criticality: 'WorkflowStatusCriticality', criticalityRepresentation: #WITHOUT_ICON } ]
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 20, criticality: 'WorkflowStatusCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_STATUS', element: 'Status' } }]
+  @UI.textArrangement: #TEXT_LAST
+  @EndUserText.label: 'Workflow Status'
+  WorkflowStatus;
+
+  @UI.lineItem: [{ hidden: true }]
+  CommentId;
+
+  @UI.lineItem: [{ hidden: true }]
+  @UI.multiLineText: true
+  @UI.fieldGroup: [{ qualifier: 'WorkflowGroup', position: 30 }]
+  Comments;
+
+  @UI.identification: [ { position: 20 } ]
+  @UI.lineItem: [ { position: 20, cssDefault.width: '12rem' } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTTYPE', element: 'Costtype' }}]
+  CostType;
+
+  @UI.identification: [ { position: 21 } ]
+  @UI.lineItem: [ { position: 21, cssDefault.width: '12rem' } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_POSTINGTYPE', element: 'Postingtype' }}]
+  PostingType;
+
+  @UI.identification: [ { position: 22 } ]
+  @UI.lineItem: [ { position: 22 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_COSTIND', element: 'costind' }}]
+  CostIndicator;
+
+  @UI.identification: [ { position: 23 } ]
+  @UI.lineItem: [ { position: 23, cssDefault.width: '9rem' } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_USAGECALCULATION', element: 'usagecal' }}]
+  UsageType;
+
+  @UI.identification: [ { position: 24 } ]
+  @UI.lineItem: [ { position: 24, cssDefault.width: '15rem' } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_REASON_F4', element: 'Reasonid' }}]
+  ReasonId;
+
+  @UI.identification: [ { position: 25 } ]
+  @UI.lineItem: [ { position: 25 } ]
+  @UI.textArrangement: #TEXT_LAST
+  @Consumption.valueHelpDefinition: [{ entity: { name: '/ESRCC/I_VALUESOURCE', element: 'ValueSource' }}]
+  ValueSource;
+
+  @UI.lineItem: [ { position: 30 } ]
+  @UI.fieldGroup: [{ position: 1, qualifier: 'AdminGroup' }]
+  CreatedBy;
+
+  @UI.lineItem: [ { position: 31, cssDefault.width: '9.5rem' } ]
+  @UI.fieldGroup: [{ position: 2, qualifier: 'AdminGroup' }]
+  CreatedAt;
+
+  @UI.lineItem: [ { position: 32 } ]
+  @UI.fieldGroup: [{ position: 3, qualifier: 'AdminGroup' }]
+  LastChangedBy;
+
+  @UI.lineItem: [ { position: 33, cssDefault.width: '9.5rem' } ]
+  @UI.fieldGroup: [{ position: 4, qualifier: 'AdminGroup' }]
+  LastChangedAt;
+
+  @UI.hidden: true
+  CostTypeDescription;
+  @UI.hidden: true
+  PostingTypeDescription;
+  @UI.hidden: true
+  CostIndDescription;
+  @UI.hidden: true
+  UsageTypeDescription;
+  @UI.hidden: true
+  ReasonDescription;
+  @UI.hidden: true
+  ValueSourceDescription;
+  @UI.hidden: true
+  SysidDescription;
+  @UI.hidden: true
+  LegalentityDescription;
+  @UI.hidden: true
+  CompanyCodeDescription;
+  @UI.hidden: true
+  CostElementFromDescription;
+  @UI.hidden: true
+  CostElementToDescription;
+  @UI.hidden: true
+  CostObjectTypeDescription;
+  @UI.hidden: true
+  CostCenterDescription;
+  @UI.hidden: true
+  WorkflowStatusCriticality;
+  @UI.hidden: true
+  WorkflowStatusDescription;
+}

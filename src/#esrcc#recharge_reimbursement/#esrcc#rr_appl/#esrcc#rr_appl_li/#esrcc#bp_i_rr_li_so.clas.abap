@@ -1,0 +1,5 @@
+CLASS /esrcc/bp_i_rr_li_so DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF /esrcc/i_rr_li_so.
+ENDCLASS.
+
+CLASS /esrcc/bp_i_rr_li_so IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,5 @@
+define service /ESRCC/UI_RR_OBJCT {
+  expose /ESRCC/C_RR_OBJCT_S as ObjctAll;
+  expose /ESRCC/C_RR_OBJCT as Objct;
+  expose /ESRCC/C_RR_OBJCTTEXT as ObjctText;
+}
